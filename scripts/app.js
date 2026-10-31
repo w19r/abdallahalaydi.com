@@ -11,6 +11,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     setTheme(nextTheme);
   });
+  // التبديل بين وضع Craft ووضع Vibe
+  const btnCraft = document.getElementById('btn-craft');
+  const btnVibe = document.getElementById('btn-vibe');
+  const craftView = document.getElementById('craft-view');
+  const vibeView = document.getElementById('vibe-view');
+
+  btnCraft.addEventListener('click', () => {
+    btnCraft.classList.add('active');
+    btnVibe.classList.remove('active');
+    vibeView.classList.remove('active-view');
+    craftView.classList.add('active-view');
+  });
+
+  btnVibe.addEventListener('click', () => {
+    btnVibe.classList.add('active');
+    btnCraft.classList.remove('active');
+    craftView.classList.remove('active-view');
+    vibeView.classList.add('active-view');
+  });
 
   function setTheme(theme) {
     root.setAttribute('data-theme', theme);
