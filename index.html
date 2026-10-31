@@ -1,31 +1,90 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" dir="ltr">
 <head>
+  <!-- ==========================================
+       1. الإعدادات الأساسية ومحركات البحث (SEO)
+       ========================================== -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Abdallah Alaydi</title>
-  <meta name="description" content="A personal home for everything I make, each in its own world." />
-  
-  <!-- الخطوط: Inter للنصوص و JetBrains Mono للعناوين الفرعية والتواريخ -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <title>Abdallah Alaydi — Computer Systems Engineering</title>
+  <meta name="description" content="A personal home for everything I make, each in its own world. I build quiet, lasting things for the web." />
+  <meta name="author" content="Abdallah Alaydi" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://abdallahalaydi.com/" />
 
-  <!-- ملفات التنسيق المقسمة (Modular CSS) -->
+  <!-- ==========================================
+       2. أيقونات المتصفحات والهواتف (Favicons & PWA)
+       ========================================== -->
+  <!-- لون شريط المتصفح يتكيف مع الوضع الليلي والنهاري -->
+  <meta name="theme-color" content="#0A0A0A" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#FAFAFA" media="(prefers-color-scheme: light)" />
+  
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Abdallah" />
+
+  <!-- ==========================================
+       3. وسوم المشاركة (Open Graph - WhatsApp, Telegram, Facebook, LinkedIn)
+       ========================================== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Abdallah Alaydi" />
+  <meta property="og:url" content="https://abdallahalaydi.com/" />
+  <meta property="og:title" content="Abdallah Alaydi — I build quiet, lasting things for the web." />
+  <meta property="og:description" content="A personal home for everything I make, each in its own world. Computer Systems Engineering student." />
+  <meta property="og:image" content="https://abdallahalaydi.com/assets/images/og-cover.png" />
+  <meta property="og:image:secure_url" content="https://abdallahalaydi.com/assets/images/og-cover.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Abdallah Alaydi Personal Website" />
+
+  <!-- ==========================================
+       4. وسوم المشاركة لمنصة إكس (Twitter / X Cards)
+       ========================================== -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://abdallahalaydi.com/" />
+  <meta name="twitter:title" content="Abdallah Alaydi — I build quiet, lasting things for the web." />
+  <meta name="twitter:description" content="A personal home for everything I make, each in its own world. Computer Systems Engineering student." />
+  <meta name="twitter:image" content="https://abdallahalaydi.com/assets/images/og-cover.png" />
+  <meta name="twitter:image:alt" content="Abdallah Alaydi Personal Website" />
+
+  <!-- ==========================================
+       5. الخطوط: Inter للنصوص و JetBrains Mono للعناوين الفرعية والتواريخ
+       ========================================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+
+  <!-- ==========================================
+       6. ملفات التنسيق المقسمة (Modular CSS)
+       ========================================== -->
   <link rel="stylesheet" href="styles/tokens.css" />
   <link rel="stylesheet" href="styles/base.css" />
   <link rel="stylesheet" href="styles/layout.css" />
   <link rel="stylesheet" href="styles/components.css" />
   <link rel="stylesheet" href="styles/skeleton.css" />
 
-  <!-- بيانات مهيكلة لمحركات البحث والذكاء الاصطناعي -->
+  <!-- ==========================================
+       7. بيانات مهيكلة لمحركات البحث والذكاء الاصطناعي (JSON-LD)
+       ========================================== -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Abdallah Alaydi",
     "url": "https://abdallahalaydi.com",
-    "sameAs": ["https://github.com/w19r"]
+    "jobTitle": "Computer Systems Engineering Student",
+    "description": "A personal home for everything I make, each in its own world.",
+    "sameAs": [
+      "https://github.com/w19r"
+    ]
   }
   </script>
 </head>
@@ -162,4 +221,3 @@
   <script src="scripts/app.js"></script>
 </body>
 </html>
-
