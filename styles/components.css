@@ -404,33 +404,27 @@
   color: var(--text-secondary);
 }
 /* ==========================================
-   Letterboxd Theme Widget
+   Letterboxd Theme Widget (Upgraded)
    ========================================== */
-
-/* ربط ألوان Letterboxd بمتغيرات الموقع مع الحفاظ على هوية المنصة */
 .lb-theme-card {
-  /* في الوضع الليلي ستأخذ لوناً متدرجاً، وفي النهاري لون الـ Surface الخاص بك */
-  background: var(--bg);
+  background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 14px; /* متناسق مع حواف vibe-card */
+  border-radius: 14px;
   padding: 18px;
   display: flex;
   flex-direction: column;
-  transition: border-color 0.25s ease, background 0.25s ease;
+  transition: border-color 0.25s ease, transform 0.2s ease;
 }
 
 .lb-theme-card:hover {
   border-color: var(--border-bright);
 }
 
-/* الشريط العلوي */
 .lb-topbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 10px;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .lb-section-title {
@@ -438,20 +432,20 @@
   align-items: center;
   gap: 8px;
   font-size: 11px;
-  font-family: var(--font-mono); /* استخدام خط Mono للعناوين ليتناسق مع تصميمك */
-  font-weight: 500;
-  letter-spacing: 0.05em;
+  font-family: var(--font-mono);
   color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .lb-dots {
   display: flex;
-  gap: 4px;
+  gap: 3.5px;
 }
 
 .lb-dots span {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   display: inline-block;
 }
@@ -460,19 +454,22 @@
 .dot-green { background-color: #00e054; }
 .dot-blue { background-color: #40bcf4; }
 
+/* كبسولة الرابط متطابقة مع vibe-badge */
 .lb-all-link {
-  font-family: var(--font-mono);
   font-size: 11px;
+  padding: 2px 9px;
+  border-radius: 99px;
+  border: 1px solid var(--border-bright);
   color: var(--text-secondary);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .lb-all-link:hover {
-  color: var(--text-primary);
+  background: var(--text-primary);
+  color: var(--bg);
 }
 
-/* شبكة البوسترات */
 .lb-poster-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -490,18 +487,18 @@
   position: relative;
   width: 100%;
   aspect-ratio: 2 / 3;
-  border-radius: 6px;
+  border-radius: 8px;
   overflow: hidden;
-  background: var(--surface);
+  background: var(--bg);
   border: 1px solid var(--border);
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* الإطار الأخضر الرسمي لـ Letterboxd عند تمرير الماوس */
 .lb-film-item:hover .lb-poster-frame {
   border-color: #00e054;
-  box-shadow: 0 4px 12px rgba(0, 224, 84, 0.15);
-  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 224, 84, 0.18);
+  transform: translateY(-3px);
 }
 
 .lb-poster-frame img {
@@ -511,17 +508,16 @@
   display: block;
 }
 
-/* طبقة اسم الفيلم عند التمرير */
 .lb-hover-title {
   position: absolute;
   inset: 0;
-  background: rgba(20, 24, 28, 0.85); /* دائماً داكنة لضمان قراءة النص الأبيض */
+  background: linear-gradient(to top, rgba(10, 12, 14, 0.95) 0%, rgba(20, 24, 28, 0.5) 100%);
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  padding: 8px;
+  padding: 10px 6px;
   text-align: center;
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 500;
   color: #fff;
   opacity: 0;
@@ -532,31 +528,66 @@
   opacity: 1;
 }
 
-/* شريط النجوم أسفل البوستر */
+/* شريط النجوم والتاريخ أسفل البوستر */
 .lb-meta-row {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 6px;
-  margin-top: 8px;
+  justify-content: space-between;
+  margin-top: 7px;
   font-size: 12px;
-  color: #00e054; /* لون التقييم الأخضر */
   line-height: 1;
 }
 
-.lb-review-badge {
+.lb-stars-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #00e054;
+}
+
+.lb-like {
+  color: #ff8000;
+  font-size: 10px;
+}
+
+.lb-date-ago {
+  font-family: var(--font-mono);
   font-size: 10px;
   color: var(--text-muted);
 }
 
-/* صندوق آخر مراجعة */
+/* صندوق المراجعة المطور مع البوستر المصغر */
 .lb-review-pill {
-  margin-top: 14px;
-  background: var(--surface);
+  margin-top: 16px;
+  background: var(--bg);
   border: 1px solid var(--border);
-  border-left: 3px solid #40bcf4; /* خط أزرق على اليسار */
-  border-radius: 8px;
-  padding: 12px 14px;
+  border-left: 3px solid #40bcf4;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  text-decoration: none;
+  transition: border-color 0.2s ease;
+}
+
+.lb-review-pill:hover {
+  border-color: var(--border-bright);
+  border-left-color: #00e054;
+}
+
+.lb-review-thumb {
+  width: 36px;
+  height: 54px;
+  border-radius: 4px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.lb-review-body {
+  flex: 1;
+  min-width: 0;
 }
 
 .lb-review-header {
@@ -566,39 +597,22 @@
   font-size: 10px;
   color: var(--text-muted);
   text-transform: uppercase;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
-.lb-review-link {
+.lb-review-text {
   font-size: 13px;
   color: var(--text-secondary);
-  text-decoration: none;
-  display: block;
-  line-height: 1.5;
+  line-height: 1.45;
+  margin: 0;
 }
 
-.lb-review-link strong {
+.lb-review-text strong {
   color: var(--text-primary);
   font-weight: 500;
 }
 
-.lb-review-link:hover strong {
-  color: #00e054;
-}
-
-/* تأثير التحميل (Shimmer) للبوسترات - يعتمد على ألوان موقعك */
-.lb-skeleton {
-  width: 100%;
-  aspect-ratio: 2 / 3;
-  border-radius: 6px;
-  background: linear-gradient(90deg, var(--surface) 25%, var(--border) 50%, var(--surface) 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-}
-
 @media (max-width: 480px) {
-  .lb-poster-grid {
-    gap: 8px;
-  }
+  .lb-poster-grid { gap: 8px; }
+  .lb-date-ago { display: none; }
 }
-
