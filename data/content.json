@@ -1,1 +1,71 @@
+{
+  "status": "Open to new projects",
+  "hero": {
+    "quietTitle": "I build quiet, lasting things for the web.",
+    "vibeTitle": "I love vibing on coding, building lasting things & fixing bugs.",
+    "bio": "Computer Systems Engineering student. Focused on clean architecture, low-level fundamentals, and minimal digital systems. A personal home for everything I make, each in its own world."
+  },
+  "projects": [
+    {
+      "id": "autoprocure",
+      "title": "AutoProcure AI Agent",
+      "summary": "Automated procurement and logistics agent for business operations.",
+      "date": "Oct 2026",
+      "fullDescription": "An intelligent AI agent engineered to automate supply chain procurement, evaluate vendor quotes, and streamline logistics workflows with minimal human intervention.",
+      "stack": ["Python", "AI Agents", "APIs", "Automation"],
+      "liveUrl": "https://abdallahalaydi.com",
+      "repoUrl": "https://github.com/w19r"
+    },
+    {
+      "id": "qr-attendance",
+      "title": "Rotating QR Attendance System",
+      "summary": "Real-time student check-in system with 90-second rotating tokens.",
+      "date": "Oct 2026",
+      "fullDescription": "Built to prevent proxy attendance in university lectures. Generates cryptographic QR codes that refresh every 90 seconds with a live check-in dashboard.",
+      "stack": ["JavaScript", "Real-time UI", "Security"],
+      "liveUrl": "https://abdallahalaydi.com",
+      "repoUrl": "https://github.com/w19r"
+    },
+    {
+      "id": "og-worker",
+      "title": "Dynamic Open Graph Engine",
+      "summary": "Edge worker injecting dynamic social preview meta tags on the fly.",
+      "date": "Sep 2026",
+      "fullDescription": "Serverless Cloudflare Worker integrated with JSON storage to dynamically render custom Open Graph cards for different routes without rebuilding static pages.",
+      "stack": ["Cloudflare Workers", "JavaScript", "Edge DNS"],
+      "liveUrl": "https://abdallahalaydi.com",
+      "repoUrl": "https://github.com/w19r"
+    }
+  ],
+  "worlds": [
+    {
+      "domain": "archive.",
+      "title": "Archive",
+      "description": "A quiet memorial photo & family archive.",
+      "url": "https://archive.abdallahalaydi.com"
+    },
+    {
+      "domain": "mcu.",
+      "title": "MCU Guide",
+      "description": "Release watch order and timeline tracker.",
+      "url": "https://mcu.abdallahalaydi.com"
+    }
+  ],
+  "interests": [
+    {
+      "category": "CINEMA",
+      "title": "Marvel Release Order & Sci-Fi",
+      "note": "Logging films and series progress on Letterboxd & Serializd (@w19r)."
+    },
+    {
+      "category": "SYSTEMS",
+      "title": "C/C++ & Python Architecture",
+      "note": "Exploring memory mechanics, SQLite, and clean modular web design."
+    }
+  ],
+  "now": {
+    "date": "NOW · OCT 2026",
+    "text": "Planning and engineering this website: monochrome design tokens, headless JSON content system, and studying Computer Systems Engineering."
+  }
+}
 
