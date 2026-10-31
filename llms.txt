@@ -1,1 +1,15 @@
+# Abdallah Alaydi (w19r)
+
+> I build quiet, lasting things for the web. Computer Systems Engineering student at Al-Azhar University – Gaza.
+
+## Core Worlds & Projects
+- **Main Hub**: https://abdallahalaydi.com
+- **Family & Photo Archive**: https://archive.abdallahalaydi.com
+- **MCU Guide**: https://mcu.abdallahalaydi.com
+- **AutoProcure**: Automated AI procurement and logistics agent.
+- **Rotating QR Attendance**: Real-time check-in web application with 90-second rotating QR tokens.
+
+## Contact
+- **GitHub**: https://github.com/w19r
+- **Email**: contact@abdallahalaydi.com
 
