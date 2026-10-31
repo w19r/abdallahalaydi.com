@@ -31,11 +31,6 @@
       "category": "CINEMA",
       "title": "Marvel Release Order & Sci-Fi",
       "note": "Logging films and series progress on Letterboxd & Serializd (@w19r)."
-    },
-    {
-      "category": "SYSTEMS",
-      "title": "C/C++ & Python Architecture",
-      "note": "Exploring memory mechanics, SQLite, and clean modular web design."
     }
   ],
   "now": {
