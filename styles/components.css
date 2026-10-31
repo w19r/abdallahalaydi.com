@@ -173,18 +173,28 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 16px; 
 }
 
 .close-btn {
   background: var(--surface);
   border: 1px solid var(--border);
   color: var(--text-secondary);
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
 }
+
+.close-btn:hover {
+  background: var(--border);
+  color: var(--text-primary);
+}
+
 
 .drawer-title {
   font-size: 19px;
