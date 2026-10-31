@@ -6,34 +6,15 @@
     "bio": "Computer Systems Engineering student. Building simple, fast, and clean web projects."
   },
   "projects": [
-    {
-      "id": "autoprocure",
-      "title": "AutoProcure AI Agent",
-      "summary": "Automated procurement and logistics agent for business operations.",
-      "date": "Oct 2026",
-      "fullDescription": "An intelligent AI agent engineered to automate supply chain procurement, evaluate vendor quotes, and streamline logistics workflows with minimal human intervention.",
-      "stack": ["Python", "AI Agents", "APIs", "Automation"],
-      "liveUrl": "https://abdallahalaydi.com",
-      "repoUrl": "https://github.com/w19r"
-    },
-    {
-      "id": "qr-attendance",
-      "title": "Rotating QR Attendance System",
-      "summary": "Real-time student check-in system with 90-second rotating tokens.",
-      "date": "Oct 2026",
-      "fullDescription": "Built to prevent proxy attendance in university lectures. Generates cryptographic QR codes that refresh every 90 seconds with a live check-in dashboard.",
-      "stack": ["JavaScript", "Real-time UI", "Security"],
-      "liveUrl": "https://abdallahalaydi.com",
-      "repoUrl": "https://github.com/w19r"
-    },
-    {
-      "id": "og-worker",
-      "title": "Dynamic Open Graph Engine",
-      "summary": "Edge worker injecting dynamic social preview meta tags on the fly.",
-      "date": "Sep 2026",
-      "fullDescription": "Serverless Cloudflare Worker integrated with JSON storage to dynamically render custom Open Graph cards for different routes without rebuilding static pages.",
-      "stack": ["Cloudflare Workers", "JavaScript", "Edge DNS"],
-      "liveUrl": "https://abdallahalaydi.com",
+        {
+      "id": "archive",
+      "title": "Family Archive",
+      "summary": "A quiet memorial photo & family archive.",
+      "date": "Aug 2026",
+      "fullDescription": "A custom data driven family archive website to preserve historical photos and records, built with a focus on minimalism and longevity.",
+      "image": "assets/images/archive-og.jpg", 
+      "stack": ["HTML/CSS", "JSON Engine", "Design System"],
+      "liveUrl": "https://archive.abdallahalaydi.com",
       "repoUrl": "https://github.com/w19r"
     }
   ],
