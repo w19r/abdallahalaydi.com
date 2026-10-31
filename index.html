@@ -1,1 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abdallah Alaydi</title>
+  <meta name="description" content="A personal home for everything I make, each in its own world." />
+  
+  <!-- الخطوط: Inter للنصوص و JetBrains Mono للعناوين الفرعية والتواريخ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <!-- ملفات التنسيق المقسمة (Modular CSS) -->
+  <link rel="stylesheet" href="styles/1-tokens.css" />
+  <link rel="stylesheet" href="styles/2-base.css" />
+  <link rel="stylesheet" href="styles/3-layout.css" />
+  <link rel="stylesheet" href="styles/4-components.css" />
+  <link rel="stylesheet" href="styles/5-skeleton.css" />
+
+  <!-- بيانات مهيكلة لمحركات البحث والذكاء الاصطناعي -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Abdallah Alaydi",
+    "url": "https://abdallahalaydi.com",
+    "sameAs": ["https://github.com/w19r"]
+  }
+  </script>
+</head>
+<body>
+
+  <main class="container">
+    <!-- الشريط العلوي: اسم بسيط + أيقونة تغيير الثيم فقط مثل Chronark -->
+    <header class="header cascade-item" style="--step: 1;">
+      <a href="/" class="brand">abdallah.</a>
+      <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
+        <!-- أيقونة الهلال/الشمس -->
+        <svg id="theme-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </header>
+
+    <!-- قسم النبذة التعريفية (Hero) -->
+    <section class="intro cascade-item" style="--step: 2;">
+      <div class="status-pill">
+        <span class="status-dot"></span>
+        <span id="status-text">Open to new projects</span>
+      </div>
+      
+      <h1 id="hero-title" class="hero-title" title="Click to switch vibe">
+        I build quiet, lasting things for the web.
+      </h1>
+      
+      <p id="hero-bio" class="intro-paragraph">
+        Computer Systems Engineering student. I love vibing on coding, building lasting systems, and fixing bugs. A personal home for everything I make, each in its own world.
+      </p>
+    </section>
+
+    <!-- قسم المشاريع (ينسدل ويتحول من Skeleton إلى نصوص حقيقية) -->
+    <section class="section cascade-item" style="--step: 3;">
+      <h2 class="section-label">PROJECTS</h2>
+      <div id="projects-list" class="item-list">
+        <!-- Skeleton Loaders (تظهر قبل التحميل كأنها نصوص) -->
+        <div class="skeleton-row">
+          <div class="skeleton-line title"></div>
+          <div class="skeleton-line sub"></div>
+        </div>
+        <div class="skeleton-row">
+          <div class="skeleton-line title"></div>
+          <div class="skeleton-line sub"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- قسم العوالم الفرعية (Sub-worlds) -->
+    <section class="section cascade-item" style="--step: 4;">
+      <h2 class="section-label">WORLDS</h2>
+      <div id="worlds-list" class="worlds-grid">
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+      </div>
+    </section>
+
+    <!-- قسم الاهتمامات (أفلام، موسيقى، وهندسة) بأسلوب هادئ -->
+    <section class="section cascade-item" style="--step: 5;">
+      <h2 class="section-label">ON ROTATION</h2>
+      <div id="interests-list" class="item-list">
+        <div class="skeleton-row">
+          <div class="skeleton-line title"></div>
+          <div class="skeleton-line sub"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- قسم الوقت الحالي (Now) -->
+    <section class="section cascade-item" style="--step: 6;">
+      <h2 class="section-label" id="now-label">NOW</h2>
+      <p id="now-text" class="muted-paragraph">
+        <span class="skeleton-line full"></span>
+      </p>
+    </section>
+
+    <!-- التذييل السفلي: خط رفيع + github و email وحقوق خفيفة -->
+    <footer class="footer cascade-item" style="--step: 7;">
+      <div class="footer-links">
+        <a href="https://github.com/w19r" target="_blank" rel="noopener">github</a>
+        <button id="copy-email" class="link-btn" data-email="contact@abdallahalaydi.com">email</button>
+      </div>
+      <span class="copyright">© 2026 Abdallah Alaydi</span>
+    </footer>
+  </main>
+
+  <!-- النافذة المنزلقة لتفاصيل المشروع الكاملة (تفتح عند الضغط على أي مشروع) -->
+  <div id="project-drawer" class="drawer-backdrop" aria-hidden="true">
+    <div class="drawer-panel" role="dialog" aria-modal="true">
+      <div class="drawer-header">
+        <span id="drawer-date" class="mono-meta"></span>
+        <button id="drawer-close" class="close-btn" aria-label="Close details">✕</button>
+      </div>
+      <h3 id="drawer-title" class="drawer-title"></h3>
+      <p id="drawer-description" class="drawer-desc"></p>
+      <div id="drawer-tags" class="tag-row"></div>
+      <div class="drawer-actions">
+        <a id="drawer-live" href="#" target="_blank" rel="noopener" class="lux-btn primary">Visit World ↗</a>
+        <a id="drawer-repo" href="#" target="_blank" rel="noopener" class="lux-btn secondary">Source Code</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- إشعار نسخ الإيميل -->
+  <div id="toast" class="toast">Email copied to clipboard</div>
+
+  <script src="scripts/render.js"></script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>
 
