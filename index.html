@@ -117,6 +117,11 @@
   <div id="project-drawer" class="drawer-backdrop" aria-hidden="true">
     <div class="drawer-panel" role="dialog" aria-modal="true">
       <div class="drawer-header">
+              <!-- حاوية صورة المشروع (تختفي إذا لم توجد صورة) -->
+      <div id="drawer-image-wrapper" class="drawer-image-wrapper" style="display: none;">
+        <img id="drawer-image" src="" alt="Project Preview" loading="lazy">
+      </div>
+
         <span id="drawer-date" class="mono-meta"></span>
         <button id="drawer-close" class="close-btn" aria-label="Close details">✕</button>
       </div>
