@@ -92,215 +92,84 @@ function openProjectDrawer(projectId) {
 
 document.addEventListener('DOMContentLoaded', loadContent);
 /* ==========================================
-   Letterboxd Theme Widget (Upgraded)
+   Letterboxd Upgraded Fetcher
    ========================================== */
-.lb-theme-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  transition: border-color 0.25s ease, transform 0.2s ease;
+function getRelativeTime(dateString) {
+  const diff = Date.now() - new Date(dateString).getTime();
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  if (days <= 0) return "today";
+  if (days === 1) return "1d";
+  if (days < 30) return `${days}d`;
+  return `${Math.floor(days / 30)}mo`;
 }
 
-.lb-theme-card:hover {
-  border-color: var(--border-bright);
+async function fetchLetterboxdActivity() {
+  const username = "w19r";
+  const rssUrl = `https://letterboxd.com/${username}/rss/`;
+  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+  
+  const grid = document.getElementById("lb-grid");
+  const reviewBanner = document.getElementById("lb-review-banner");
+  if (!grid) return;
+
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    if (data.status !== "ok") throw new Error("RSS Error");
+    
+    grid.innerHTML = "";
+
+    data.items.slice(0, 4).forEach(item => {
+      const [filmTitle, stars = ""] = item.title.split(" - ");
+      const poster = item.thumbnail || (item.description.match(/src="([^"]+)"/) || [])[1];
+      const hasReview = item.guid.includes("letterboxd-review");
+      const timeAgo = getRelativeTime(item.pubDate.replace(" ", "T") + "Z");
+
+      const card = document.createElement("a");
+      card.className = "lb-film-item";
+      card.href = item.link;
+      card.target = "_blank";
+      card.rel = "noopener noreferrer";
+      
+      card.innerHTML = `
+        <div class="lb-poster-frame">
+          <img src="${poster}" alt="${filmTitle}" loading="lazy">
+          <div class="lb-hover-title">${filmTitle}</div>
+        </div>
+        <div class="lb-meta-row">
+          <div class="lb-stars-group">
+            <span>${stars}</span>
+            ${hasReview ? '<span class="lb-review-badge">≡</span>' : ''}
+          </div>
+          <span class="lb-date-ago">${timeAgo}</span>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    const latestReview = data.items.find(i => i.guid.includes("letterboxd-review"));
+    if (latestReview && reviewBanner) {
+      const [filmName, rating = ""] = latestReview.title.split(" - ");
+      const reviewPoster = latestReview.thumbnail || (latestReview.description.match(/src="([^"]+)"/) || [])[1];
+      const text = latestReview.description.replace(/<[^>]+>/g, "").trim();
+
+      reviewBanner.style.display = "flex";
+      reviewBanner.innerHTML = `
+        <img src="${reviewPoster}" alt="${filmName}" class="lb-review-thumb" loading="lazy">
+        <div class="lb-review-body">
+          <div class="lb-review-header">
+            <span>LATEST REVIEW</span>
+            <span style="color: #00e054;">${rating}</span>
+          </div>
+          <p class="lb-review-text">
+            <strong>${filmName}</strong> — "${text}"
+          </p>
+        </div>
+      `;
+    }
+  } catch (error) {
+    console.error("Letterboxd Error:", error);
+  }
 }
 
-.lb-topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-.lb-section-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  font-family: var(--font-mono);
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.lb-dots {
-  display: flex;
-  gap: 3.5px;
-}
-
-.lb-dots span {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.dot-orange { background-color: #ff8000; }
-.dot-green { background-color: #00e054; }
-.dot-blue { background-color: #40bcf4; }
-
-/* كبسولة الرابط متطابقة مع vibe-badge */
-.lb-all-link {
-  font-size: 11px;
-  padding: 2px 9px;
-  border-radius: 99px;
-  border: 1px solid var(--border-bright);
-  color: var(--text-secondary);
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.lb-all-link:hover {
-  background: var(--text-primary);
-  color: var(--bg);
-}
-
-.lb-poster-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-}
-
-.lb-film-item {
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  flex-direction: column;
-}
-
-.lb-poster-frame {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 2 / 3;
-  border-radius: 8px;
-  overflow: hidden;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-.lb-film-item:hover .lb-poster-frame {
-  border-color: #00e054;
-  box-shadow: 0 6px 16px rgba(0, 224, 84, 0.18);
-  transform: translateY(-3px);
-}
-
-.lb-poster-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.lb-hover-title {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(10, 12, 14, 0.95) 0%, rgba(20, 24, 28, 0.5) 100%);
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding: 10px 6px;
-  text-align: center;
-  font-size: 11.5px;
-  font-weight: 500;
-  color: #fff;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.lb-film-item:hover .lb-hover-title {
-  opacity: 1;
-}
-
-/* شريط النجوم والتاريخ أسفل البوستر */
-.lb-meta-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 7px;
-  font-size: 12px;
-  line-height: 1;
-}
-
-.lb-stars-group {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  color: #00e054;
-}
-
-.lb-like {
-  color: #ff8000;
-  font-size: 10px;
-}
-
-.lb-date-ago {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--text-muted);
-}
-
-/* صندوق المراجعة المطور مع البوستر المصغر */
-.lb-review-pill {
-  margin-top: 16px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-left: 3px solid #40bcf4;
-  border-radius: 10px;
-  padding: 12px;
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  text-decoration: none;
-  transition: border-color 0.2s ease;
-}
-
-.lb-review-pill:hover {
-  border-color: var(--border-bright);
-  border-left-color: #00e054;
-}
-
-.lb-review-thumb {
-  width: 36px;
-  height: 54px;
-  border-radius: 4px;
-  object-fit: cover;
-  border: 1px solid var(--border);
-  flex-shrink: 0;
-}
-
-.lb-review-body {
-  flex: 1;
-  min-width: 0;
-}
-
-.lb-review-header {
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  margin-bottom: 4px;
-}
-
-.lb-review-text {
-  font-size: 13px;
-  color: var(--text-secondary);
-  line-height: 1.45;
-  margin: 0;
-}
-
-.lb-review-text strong {
-  color: var(--text-primary);
-  font-weight: 500;
-}
-
-@media (max-width: 480px) {
-  .lb-poster-grid { gap: 8px; }
-  .lb-date-ago { display: none; }
-}
+document.addEventListener('DOMContentLoaded', fetchLetterboxdActivity);
