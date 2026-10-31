@@ -403,3 +403,202 @@
   font-size: 13px;
   color: var(--text-secondary);
 }
+/* ==========================================
+   Letterboxd Theme Widget
+   ========================================== */
+
+/* ربط ألوان Letterboxd بمتغيرات الموقع مع الحفاظ على هوية المنصة */
+.lb-theme-card {
+  /* في الوضع الليلي ستأخذ لوناً متدرجاً، وفي النهاري لون الـ Surface الخاص بك */
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 14px; /* متناسق مع حواف vibe-card */
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.lb-theme-card:hover {
+  border-color: var(--border-bright);
+}
+
+/* الشريط العلوي */
+.lb-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+}
+
+.lb-section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-family: var(--font-mono); /* استخدام خط Mono للعناوين ليتناسق مع تصميمك */
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.lb-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.lb-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-orange { background-color: #ff8000; }
+.dot-green { background-color: #00e054; }
+.dot-blue { background-color: #40bcf4; }
+
+.lb-all-link {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.lb-all-link:hover {
+  color: var(--text-primary);
+}
+
+/* شبكة البوسترات */
+.lb-poster-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.lb-film-item {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+.lb-poster-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* الإطار الأخضر الرسمي لـ Letterboxd عند تمرير الماوس */
+.lb-film-item:hover .lb-poster-frame {
+  border-color: #00e054;
+  box-shadow: 0 4px 12px rgba(0, 224, 84, 0.15);
+  transform: translateY(-2px);
+}
+
+.lb-poster-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* طبقة اسم الفيلم عند التمرير */
+.lb-hover-title {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 24, 28, 0.85); /* دائماً داكنة لضمان قراءة النص الأبيض */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.lb-film-item:hover .lb-hover-title {
+  opacity: 1;
+}
+
+/* شريط النجوم أسفل البوستر */
+.lb-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #00e054; /* لون التقييم الأخضر */
+  line-height: 1;
+}
+
+.lb-review-badge {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+/* صندوق آخر مراجعة */
+.lb-review-pill {
+  margin-top: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid #40bcf4; /* خط أزرق على اليسار */
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.lb-review-header {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.lb-review-link {
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  display: block;
+  line-height: 1.5;
+}
+
+.lb-review-link strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.lb-review-link:hover strong {
+  color: #00e054;
+}
+
+/* تأثير التحميل (Shimmer) للبوسترات - يعتمد على ألوان موقعك */
+.lb-skeleton {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--surface) 25%, var(--border) 50%, var(--surface) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@media (max-width: 480px) {
+  .lb-poster-grid {
+    gap: 8px;
+  }
+}
+
