@@ -10,7 +10,7 @@ async function loadContent() {
     document.getElementById('hero-title').textContent = siteData.hero.quietTitle;
     document.getElementById('hero-bio').textContent = siteData.hero.bio;
 
-    // 2. رسم المشاريع بأسلوب النظيف
+    // 2. رسم المشاريع (Craft)
     const projectsContainer = document.getElementById('projects-list');
     projectsContainer.innerHTML = siteData.projects.map(proj => `
       <article class="project-item" data-id="${proj.id}">
@@ -22,12 +22,12 @@ async function loadContent() {
       </article>
     `).join('');
 
-    // تفعيل فتح النافذة المنزلقة عند الضغط على أي مشروع
+    // تفعيل النافذة المنزلقة للمشاريع
     document.querySelectorAll('.project-item').forEach(el => {
       el.addEventListener('click', () => openProjectDrawer(el.dataset.id));
     });
 
-    // 3. رسم العوالم الفرعية (Archive & MCU)
+    // 3. رسم العوالم (Worlds)
     const worldsContainer = document.getElementById('worlds-list');
     worldsContainer.innerHTML = siteData.worlds.map(w => `
       <a href="${w.url}" target="_blank" rel="noopener" class="world-card">
@@ -37,17 +37,22 @@ async function loadContent() {
       </a>
     `).join('');
 
-    // 4. رسم الاهتمامات (On Rotation)
-    const interestsContainer = document.getElementById('interests-list');
-    interestsContainer.innerHTML = siteData.interests.map(item => `
-      <div>
-        <div class="project-header">
-          <span class="project-title">${item.title}</span>
-          <span class="mono-meta">${item.category}</span>
-        </div>
-        <p class="project-summary">${item.note}</p>
-      </div>
-    `).join('');
+    // 4. رسم بطاقات الحياة (Vibe Bento Cards) - الكود المحدث!
+    const vibeContainer = document.getElementById('vibe-grid');
+    if (vibeContainer && siteData.interests) {
+      vibeContainer.innerHTML = siteData.interests.map(item => `
+        <a href="${item.url || '#'}" ${item.url && item.url !== '#' ? 'target="_blank" rel="noopener"' : ''} class="vibe-card">
+          <div class="vibe-card-top">
+            <span class="vibe-tag">${item.category}</span>
+            ${item.badge ? `<span class="vibe-badge">${item.badge}</span>` : ''}
+          </div>
+          <div>
+            <div class="vibe-card-title">${item.title}</div>
+            <p class="vibe-card-sub">${item.note}</p>
+          </div>
+        </a>
+      `).join('');
+    }
 
     // 5. تحديث قسم Now
     document.getElementById('now-label').textContent = siteData.now.date;
