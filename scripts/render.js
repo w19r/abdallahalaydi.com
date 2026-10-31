@@ -90,45 +90,49 @@ function openProjectDrawer(projectId) {
   drawer.setAttribute('aria-hidden', 'false');
 }
 
-document.addEventListener('DOMContentLoaded', loadContent);
-/* ==========================================
-   Letterboxd RSS Fetcher
+document.addEventListener('DOMContentLoaded', loadContent);/* ==========================================
+   Letterboxd RSS Fetcher (Instant Update)
    ========================================== */
 async function fetchLetterboxdActivity() {
-  const username = "w19r"; // اسم حسابك على Letterboxd
-  const rssUrl = `https://letterboxd.com/${username}/rss/`;
-  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+  const username = "w19r"; // حسابك
+  // إضافة توقيت للرابط لمنع الكاش وجلب التحديث فوراً
+  const rssUrl = `https://letterboxd.com/${username}/rss/?t=${Date.now()}`;
+  const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`;
   
   const grid = document.getElementById("lb-grid");
   const reviewBanner = document.getElementById("lb-review-banner");
   
-  if (!grid) return; // تأكد من وجود العنصر في الصفحة
+  if (!grid) return;
 
   try {
-    const response = await fetch(apiUrl);
-    const data = await response.json();
+    const response = await fetch(proxyUrl, { cache: "no-store" });
+    const proxyData = await response.json();
     
-    if (data.status !== "ok") throw new Error("RSS Fetch failed");
+    // تحويل النص المسترجع إلى صيغة XML ليتمكن المتصفح من قراءته
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(proxyData.contents, "text/xml");
+    const items = Array.from(xml.querySelectorAll("item"));
     
-    // تفريغ تأثيرات الـ Skeleton
     grid.innerHTML = "";
 
-    // 1. معالجة وعرض آخر 4 أفلام
-    data.items.slice(0, 4).forEach(item => {
-      // فصل العنوان عن التقييم بالنجوم
-      const [filmTitle, stars = ""] = item.title.split(" - ");
+    // 1. عرض آخر 4 أفلام
+    items.slice(0, 4).forEach(item => {
+      const fullTitle = item.querySelector("title")?.textContent || "";
+      const link = item.querySelector("link")?.textContent || "#";
+      const desc = item.querySelector("description")?.textContent || "";
+
+      const [filmTitle, stars = ""] = fullTitle.split(" - ");
+      const posterMatch = desc.match(/src="([^"]+)"/);
+      const poster = posterMatch ? posterMatch[1] : "";
       
-      // استخراج رابط البوستر من الوصف أو من الصورة المصغرة
-      const poster = item.thumbnail || (item.description.match(/src="([^"]+)"/) || [])[1];
-      
-      // التحقق مما إذا كان الفيلم يحتوي على مراجعة نصية عبر الـ GUID
-      const hasReview = item.guid.includes("letterboxd-review");
+      const guid = item.querySelector("guid")?.textContent || "";
+      const hasReview = guid.includes("letterboxd-review");
 
       const card = document.createElement("a");
       card.className = "lb-film-item";
-      card.href = item.link;
+      card.href = link;
       card.target = "_blank";
-      card.rel = "noopener noreferrer"; // أمان أفضل للروابط الخارجية
+      card.rel = "noopener noreferrer";
       
       card.innerHTML = `
         <div class="lb-poster-frame">
@@ -143,12 +147,18 @@ async function fetchLetterboxdActivity() {
       grid.appendChild(card);
     });
 
-    // 2. البحث عن أحدث مراجعة نصية وعرضها بالأسفل
-    const latestReview = data.items.find(i => i.guid.includes("letterboxd-review"));
+    // 2. البحث عن أحدث مراجعة نصية
+    const latestReview = items.find(item => 
+      (item.querySelector("guid")?.textContent || "").includes("letterboxd-review")
+    );
+    
     if (latestReview && reviewBanner) {
-      const [filmName, rating = ""] = latestReview.title.split(" - ");
-      // إزالة كل وسوم الـ HTML من المراجعة النصية
-      const text = latestReview.description.replace(/<[^>]+>/g, "").trim();
+      const fullTitle = latestReview.querySelector("title")?.textContent || "";
+      const link = latestReview.querySelector("link")?.textContent || "#";
+      const desc = latestReview.querySelector("description")?.textContent || "";
+      
+      const [filmName, rating = ""] = fullTitle.split(" - ");
+      const text = desc.replace(/<[^>]+>/g, "").trim();
 
       reviewBanner.style.display = "block";
       reviewBanner.innerHTML = `
@@ -156,7 +166,7 @@ async function fetchLetterboxdActivity() {
           <span>LATEST REVIEW</span>
           <span style="color: #00e054;">${rating}</span>
         </div>
-        <a href="${latestReview.link}" target="_blank" rel="noopener noreferrer" class="lb-review-link">
+        <a href="${link}" target="_blank" rel="noopener noreferrer" class="lb-review-link">
           <strong>${filmName}</strong> — "${text}"
         </a>
       `;
@@ -169,7 +179,6 @@ async function fetchLetterboxdActivity() {
   }
 }
 
-// استدعاء الدالة عند تحميل الصفحة
 document.addEventListener('DOMContentLoaded', () => {
   fetchLetterboxdActivity();
 });
