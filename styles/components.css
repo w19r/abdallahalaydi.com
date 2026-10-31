@@ -1,1 +1,271 @@
+.brand {
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.theme-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-secondary);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theme-btn:hover {
+  color: var(--text-primary);
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--text-primary);
+  box-shadow: 0 0 8px var(--text-primary);
+}
+
+.hero-title {
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.35;
+  margin-bottom: 14px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.intro-paragraph,
+.muted-paragraph {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* صفوف المشاريع بأسلوب Chronark مع تفاعل فخم */
+.project-item {
+  group: project;
+  cursor: pointer;
+  padding: 12px 14px;
+  margin: 0 -14px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.project-item:hover {
+  background-color: var(--surface);
+  border-color: var(--border);
+  transform: translateX(2px);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+
+.project-title {
+  font-weight: 500;
+  color: var(--text-primary);
+  font-size: 15px;
+}
+
+.mono-meta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.project-summary {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+/* بطاقات العوالم المصغرة */
+.world-card {
+  display: block;
+  text-decoration: none;
+  padding: 16px;
+  border-radius: 12px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  transition: border-color 0.25s ease, transform 0.2s ease;
+}
+
+.world-card:hover {
+  border-color: var(--border-bright);
+  transform: translateY(-2px);
+}
+
+.world-domain {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.world-title {
+  font-weight: 500;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.world-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* النافذة المنزلقة (Drawer) لتفاصيل المشروع */
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease-out);
+  z-index: 100;
+}
+
+.drawer-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer-panel {
+  background: var(--bg);
+  border: 1px solid var(--border-bright);
+  border-radius: 18px 18px 0 0;
+  width: 100%;
+  max-width: var(--max-width);
+  padding: 28px 24px 36px;
+  transform: translateY(100%);
+  transition: transform 0.4s var(--ease-out);
+}
+
+.drawer-backdrop.open .drawer-panel {
+  transform: translateY(0);
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.close-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.drawer-title {
+  font-size: 19px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.drawer-desc {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 99px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+.drawer-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.lux-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 18px;
+  border-radius: 99px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 0.15s ease, opacity 0.2s ease;
+}
+
+.lux-btn:active {
+  transform: scale(0.96);
+}
+
+.lux-btn.primary {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+.lux-btn.secondary {
+  background: var(--surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-bright);
+}
+
+/* إشعار النسخ */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--accent);
+  color: var(--accent-fg);
+  padding: 8px 16px;
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: all 0.25s var(--ease-out);
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
