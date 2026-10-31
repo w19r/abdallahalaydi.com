@@ -91,3 +91,85 @@ function openProjectDrawer(projectId) {
 }
 
 document.addEventListener('DOMContentLoaded', loadContent);
+/* ==========================================
+   Letterboxd RSS Fetcher
+   ========================================== */
+async function fetchLetterboxdActivity() {
+  const username = "w19r"; // اسم حسابك على Letterboxd
+  const rssUrl = `https://letterboxd.com/${username}/rss/`;
+  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+  
+  const grid = document.getElementById("lb-grid");
+  const reviewBanner = document.getElementById("lb-review-banner");
+  
+  if (!grid) return; // تأكد من وجود العنصر في الصفحة
+
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    
+    if (data.status !== "ok") throw new Error("RSS Fetch failed");
+    
+    // تفريغ تأثيرات الـ Skeleton
+    grid.innerHTML = "";
+
+    // 1. معالجة وعرض آخر 4 أفلام
+    data.items.slice(0, 4).forEach(item => {
+      // فصل العنوان عن التقييم بالنجوم
+      const [filmTitle, stars = ""] = item.title.split(" - ");
+      
+      // استخراج رابط البوستر من الوصف أو من الصورة المصغرة
+      const poster = item.thumbnail || (item.description.match(/src="([^"]+)"/) || [])[1];
+      
+      // التحقق مما إذا كان الفيلم يحتوي على مراجعة نصية عبر الـ GUID
+      const hasReview = item.guid.includes("letterboxd-review");
+
+      const card = document.createElement("a");
+      card.className = "lb-film-item";
+      card.href = item.link;
+      card.target = "_blank";
+      card.rel = "noopener noreferrer"; // أمان أفضل للروابط الخارجية
+      
+      card.innerHTML = `
+        <div class="lb-poster-frame">
+          <img src="${poster}" alt="${filmTitle}" loading="lazy">
+          <div class="lb-hover-title">${filmTitle}</div>
+        </div>
+        <div class="lb-meta-row">
+          <span>${stars}</span>
+          ${hasReview ? '<span class="lb-review-badge">≡</span>' : ''}
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    // 2. البحث عن أحدث مراجعة نصية وعرضها بالأسفل
+    const latestReview = data.items.find(i => i.guid.includes("letterboxd-review"));
+    if (latestReview && reviewBanner) {
+      const [filmName, rating = ""] = latestReview.title.split(" - ");
+      // إزالة كل وسوم الـ HTML من المراجعة النصية
+      const text = latestReview.description.replace(/<[^>]+>/g, "").trim();
+
+      reviewBanner.style.display = "block";
+      reviewBanner.innerHTML = `
+        <div class="lb-review-header">
+          <span>LATEST REVIEW</span>
+          <span style="color: #00e054;">${rating}</span>
+        </div>
+        <a href="${latestReview.link}" target="_blank" rel="noopener noreferrer" class="lb-review-link">
+          <strong>${filmName}</strong> — "${text}"
+        </a>
+      `;
+    }
+  } catch (error) {
+    console.error("Letterboxd Error:", error);
+    if (grid) {
+      grid.innerHTML = '<p class="muted-paragraph" style="grid-column: 1/-1; text-align: center; font-size: 13px;">تعذر تحميل النشاط الأخير.</p>';
+    }
+  }
+}
+
+// استدعاء الدالة عند تحميل الصفحة
+document.addEventListener('DOMContentLoaded', () => {
+  fetchLetterboxdActivity();
+});
