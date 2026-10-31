@@ -47,7 +47,7 @@ a:hover {
 
 .cascade-item {
   opacity: 0;
-  animation: cascadeDown 0.7s var(--ease-out) forwards;
-  animation-delay: calc(var(--step, 1) * 95ms);
+  animation: cascadeDown 1.2s var(--ease-out) forwards;
+  animation-delay: calc(var(--step, 1) * 180ms);
 }
 
