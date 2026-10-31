@@ -165,7 +165,7 @@
       
     </div>
 
-    <!-- ========================================== -->
+        <!-- ========================================== -->
     <!-- 2. واجهة الـ VIBE (تظهر عند الضغط على Vibe) -->
     <!-- ========================================== -->
     <div id="vibe-view" class="view-section">
@@ -174,7 +174,39 @@
         <!-- شبكة البطاقات (Bento Grid) -->
         <div id="vibe-grid" class="vibe-bento-grid"></div>
       </section>
+
+      <!-- قسم Letterboxd المضاف حديثاً -->
+      <section class="section cascade-item" style="--step: 4;">
+        <div class="lb-theme-card">
+          <!-- الشريط العلوي -->
+          <div class="lb-topbar">
+            <div class="lb-section-title">
+              <div class="lb-dots">
+                <span class="dot-orange"></span>
+                <span class="dot-green"></span>
+                <span class="dot-blue"></span>
+              </div>
+              <span>RECENTLY WATCHED</span>
+            </div>
+            <a href="https://letterboxd.com/w19r/" target="_blank" class="lb-all-link">
+              @w19r ↗
+            </a>
+          </div>
+
+          <!-- شبكة البوسترات -->
+          <div id="lb-grid" class="lb-poster-grid">
+            <div class="lb-skeleton"></div>
+            <div class="lb-skeleton"></div>
+            <div class="lb-skeleton"></div>
+            <div class="lb-skeleton"></div>
+          </div>
+          
+          <!-- المراجعة النصية -->
+          <div id="lb-review-banner" class="lb-review-pill" style="display: none;"></div>
+        </div>
+      </section>
     </div>
+
 
     <!-- التذييل السفلي -->
     <footer class="footer cascade-item" style="--step: 6;">
