@@ -6,7 +6,7 @@
     "bio": "Computer Systems Engineering student. Building simple, fast, and clean web projects."
   },
   "projects": [
-        {
+    {
       "id": "archive",
       "title": "Family Archive",
       "summary": "A quiet memorial photo & family archive.",
@@ -29,8 +29,17 @@
   "interests": [
     {
       "category": "CINEMA",
+      "badge": "Letterboxd ↗",
       "title": "Marvel Release Order & Sci-Fi",
-      "note": "Logging films and series progress on Letterboxd & Serializd (@w19r)."
+      "note": "Logging films and series progress on Letterboxd & Serializd (@w19r).",
+      "url": "https://letterboxd.com/w19r"
+    },
+    {
+      "category": "GAMING",
+      "badge": "Mobile",
+      "title": "Minecraft, Brawl Stars & DST",
+      "note": "Tactical plays in Brawl Stars, exploring Minecraft Bedrock, and surviving in Don't Starve Together.",
+      "url": "#"
     }
   ],
   "now": {
@@ -38,4 +47,3 @@
     "text": "Planning a student-focused web platform equipped with AI tools and academic resources."
   }
 }
-
