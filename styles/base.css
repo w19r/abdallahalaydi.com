@@ -1,1 +1,53 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.35s var(--ease-out), color 0.35s var(--ease-out);
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--border-bright);
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.2s ease, opacity 0.2s ease;
+}
+
+a:hover {
+  text-decoration-color: var(--text-primary);
+}
+
+/* حركة: انسدال هادئ من الأعلى إلى الأسفل بالتتابع */
+@keyframes cascadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-14px);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.cascade-item {
+  opacity: 0;
+  animation: cascadeDown 0.7s var(--ease-out) forwards;
+  animation-delay: calc(var(--step, 1) * 95ms);
+}
 
