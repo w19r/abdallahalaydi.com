@@ -20,12 +20,6 @@
   ],
   "worlds": [
     {
-      "domain": "archive.",
-      "title": "Archive",
-      "description": "A quiet memorial photo & family archive.",
-      "url": "https://archive.abdallahalaydi.com"
-    },
-    {
       "domain": "mcu.",
       "title": "MCU Guide",
       "description": "Release watch order and timeline tracker.",
