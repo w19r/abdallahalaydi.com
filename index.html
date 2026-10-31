@@ -114,26 +114,32 @@
   </main>
 
   <!-- النافذة المنزلقة لتفاصيل المشروع الكاملة (تفتح عند الضغط على أي مشروع) -->
-  <div id="project-drawer" class="drawer-backdrop" aria-hidden="true">
+    <div id="project-drawer" class="drawer-backdrop" aria-hidden="true">
     <div class="drawer-panel" role="dialog" aria-modal="true">
-      <div class="drawer-header">
-              <!-- حاوية صورة المشروع (تختفي إذا لم توجد صورة) -->
+      
+      <!-- 1. حاوية الصورة في الأعلى دائماً -->
       <div id="drawer-image-wrapper" class="drawer-image-wrapper" style="display: none;">
         <img id="drawer-image" src="" alt="Project Preview" loading="lazy">
       </div>
 
+      <!-- 2. قسم الهيدر (التاريخ + زر الإغلاق) -->
+      <div class="drawer-header">
         <span id="drawer-date" class="mono-meta"></span>
         <button id="drawer-close" class="close-btn" aria-label="Close details">✕</button>
       </div>
+
+      <!-- 3. باقي التفاصيل -->
       <h3 id="drawer-title" class="drawer-title"></h3>
       <p id="drawer-description" class="drawer-desc"></p>
       <div id="drawer-tags" class="tag-row"></div>
       <div class="drawer-actions">
-        <a id="drawer-live" href="#" target="_blank" rel="noopener" class="lux-btn primary">Visit World ↗</a>
+        <a id="drawer-live" href="#" target="_blank" rel="noopener" class="lux-btn primary">Visit Site ↗</a>
         <a id="drawer-repo" href="#" target="_blank" rel="noopener" class="lux-btn secondary">Source Code</a>
       </div>
+
     </div>
   </div>
+
 
   <!-- إشعار نسخ الإيميل -->
   <div id="toast" class="toast">Email copied to clipboard</div>
