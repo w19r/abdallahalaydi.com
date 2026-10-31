@@ -12,7 +12,7 @@
       "summary": "A quiet memorial photo & family archive.",
       "date": "Aug 2026",
       "fullDescription": "A custom data driven family archive website to preserve historical photos and records, built with a focus on minimalism and longevity.",
-      "image": "assets/images/archive-og.jpg", 
+      "image": "assets/images/Family-Archive.png", 
       "stack": ["HTML/CSS", "JSON Engine", "Design System"],
       "liveUrl": "https://archive.abdallahalaydi.com",
       "repoUrl": "https://github.com/w19r"
