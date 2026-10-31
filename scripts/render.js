@@ -69,10 +69,20 @@ function openProjectDrawer(projectId) {
   document.getElementById('drawer-live').href = proj.liveUrl;
   document.getElementById('drawer-repo').href = proj.repoUrl;
 
+  const drawerImgWrapper = document.getElementById('drawer-image-wrapper');
+  const drawerImg = document.getElementById('drawer-image');
+
+  if (proj.image) {
+    drawerImg.src = proj.image;
+    drawerImgWrapper.style.display = 'block';
+  } else {
+    drawerImg.src = '';
+    drawerImgWrapper.style.display = 'none';
+  }
+
   const drawer = document.getElementById('project-drawer');
   drawer.classList.add('open');
   drawer.setAttribute('aria-hidden', 'false');
 }
 
 document.addEventListener('DOMContentLoaded', loadContent);
-
