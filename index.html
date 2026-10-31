@@ -32,7 +32,7 @@
 <body>
 
   <main class="container">
-        <!-- الشريط العلوي المحدث: شعار + زر التبديل Craft/Vibe + زر الإضاءة -->
+    <!-- الشريط العلوي المحدث: شعار + زر التبديل Craft/Vibe + زر الإضاءة -->
     <header class="header cascade-item" style="--step: 1;">
       <a href="/" class="brand">abdallah.</a>
       
@@ -68,41 +68,58 @@
       </p>
     </section>
 
-    <!-- قسم المشاريع (ينسدل ويتحول من Skeleton إلى نصوص حقيقية) -->
-    <section class="section cascade-item" style="--step: 3;">
-      <h2 class="section-label">PROJECTS</h2>
-      <div id="projects-list" class="item-list">
-        <!-- Skeleton Loaders (تظهر قبل التحميل كأنها نصوص) -->
-        <div class="skeleton-row">
-          <div class="skeleton-line title"></div>
-          <div class="skeleton-line sub"></div>
+    <!-- ========================================== -->
+    <!-- 1. واجهة الـ CRAFT (تظهر افتراضياً) -->
+    <!-- ========================================== -->
+    <div id="craft-view" class="view-section active-view">
+      
+      <!-- قسم المشاريع -->
+      <section class="section cascade-item" style="--step: 3;">
+        <h2 class="section-label">PROJECTS</h2>
+        <div id="projects-list" class="item-list">
+          <div class="skeleton-row">
+            <div class="skeleton-line title"></div>
+            <div class="skeleton-line sub"></div>
+          </div>
+          <div class="skeleton-row">
+            <div class="skeleton-line title"></div>
+            <div class="skeleton-line sub"></div>
+          </div>
         </div>
-        <div class="skeleton-row">
-          <div class="skeleton-line title"></div>
-          <div class="skeleton-line sub"></div>
+      </section>
+
+      <!-- قسم العوالم الفرعية -->
+      <section class="section cascade-item" style="--step: 4;">
+        <h2 class="section-label">WORLDS</h2>
+        <div id="worlds-list" class="worlds-grid">
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- قسم العوالم الفرعية (Sub-worlds) -->
-    <section class="section cascade-item" style="--step: 4;">
-      <h2 class="section-label">WORLDS</h2>
-      <div id="worlds-list" class="worlds-grid">
-        <div class="skeleton-card"></div>
-        <div class="skeleton-card"></div>
-      </div>
-    </section>
+      <!-- قسم الوقت الحالي (Now) -->
+      <section class="section cascade-item" style="--step: 5;">
+        <h2 class="section-label" id="now-label">NOW</h2>
+        <p id="now-text" class="muted-paragraph">
+          <span class="skeleton-line full"></span>
+        </p>
+      </section>
+      
+    </div>
 
-    <!-- قسم الوقت الحالي (Now) -->
-    <section class="section cascade-item" style="--step: 6;">
-      <h2 class="section-label" id="now-label">NOW</h2>
-      <p id="now-text" class="muted-paragraph">
-        <span class="skeleton-line full"></span>
-      </p>
-    </section>
+    <!-- ========================================== -->
+    <!-- 2. واجهة الـ VIBE (تظهر عند الضغط على Vibe) -->
+    <!-- ========================================== -->
+    <div id="vibe-view" class="view-section">
+      <section class="section cascade-item" style="--step: 3;">
+        <h2 class="section-label">LIFE & ROTATION</h2>
+        <!-- شبكة البطاقات (Bento Grid) -->
+        <div id="vibe-grid" class="vibe-bento-grid"></div>
+      </section>
+    </div>
 
-    <!-- التذييل السفلي: خط رفيع + github و email وحقوق خفيفة -->
-    <footer class="footer cascade-item" style="--step: 7;">
+    <!-- التذييل السفلي -->
+    <footer class="footer cascade-item" style="--step: 6;">
       <div class="footer-links">
         <a href="https://github.com/w19r" target="_blank" rel="noopener">github</a>
         <button id="copy-email" class="link-btn" data-email="contact@abdallahalaydi.com">email</button>
@@ -111,8 +128,8 @@
     </footer>
   </main>
 
-  <!-- النافذة المنزلقة لتفاصيل المشروع الكاملة (تفتح عند الضغط على أي مشروع) -->
-    <div id="project-drawer" class="drawer-backdrop" aria-hidden="true">
+  <!-- النافذة المنزلقة لتفاصيل المشروع -->
+  <div id="project-drawer" class="drawer-backdrop" aria-hidden="true">
     <div class="drawer-panel" role="dialog" aria-modal="true">
       
       <!-- 1. حاوية الصورة في الأعلى دائماً -->
@@ -137,7 +154,6 @@
 
     </div>
   </div>
-
 
   <!-- إشعار نسخ الإيميل -->
   <div id="toast" class="toast">Email copied to clipboard</div>
