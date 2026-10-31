@@ -1,1 +1,25 @@
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skeleton-line,
+.skeleton-card {
+  display: block;
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--surface) 25%, var(--shimmer) 50%, var(--surface) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite;
+}
+
+.skeleton-line.title { width: 45%; height: 16px; }
+.skeleton-line.sub { width: 75%; height: 13px; }
+.skeleton-line.full { width: 90%; height: 15px; }
+.skeleton-card { height: 92px; border-radius: 12px; }
 
