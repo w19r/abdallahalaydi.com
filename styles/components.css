@@ -616,3 +616,24 @@
   .lb-poster-grid { gap: 8px; }
   .lb-date-ago { display: none; }
 }
+.social-icons-row {
+  display: flex;
+  gap: 24px;          /* المسافة بين الأيقونات */
+  margin-top: 32px;   /* المسافة بينها وبين بطاقة الأفلام */
+  margin-bottom: 40px;
+  align-items: center;
+}
+
+.social-icons-row a {
+  color: #888888;     /* اللون الرمادي الهادئ */
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icons-row a:hover {
+  color: #FAFAFA;     /* يتحول للأبيض عند التحويم في الوضع الليلي */
+  transform: translateY(-3px); /* قفزة خفيفة للأعلى */
+}
+
