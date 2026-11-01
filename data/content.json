@@ -18,14 +18,6 @@
       "repoUrl": "https://github.com/w19r"
     }
   ],
-  "worlds": [
-    {
-      "domain": "mcu.",
-      "title": "MCU Guide",
-      "description": "Release watch order and timeline tracker.",
-      "url": "https://mcu.abdallahalaydi.com"
-    }
-  ],
   "interests": [
     {
       "category": "CINEMA",
