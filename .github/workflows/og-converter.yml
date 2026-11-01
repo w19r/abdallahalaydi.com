@@ -1,0 +1,30 @@
+name: Generate OG Image
+
+on:
+  push:
+    paths:
+      - 'assets/icons/og-cover.svg'
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Converter & Fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y librsvg2-bin fonts-inter
+
+      - name: Convert SVG to PNG
+        run: |
+          rsvg-convert -w 1200 -h 630 assets/icons/og-cover.svg > assets/images/og-cover.png
+
+      - name: Commit and Push PNG
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Auto-generate PNG from SVG"
+          file_pattern: assets/icons/og-cover.png
