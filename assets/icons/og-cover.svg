@@ -7,11 +7,6 @@
   <rect width="1200" height="630" fill="url(#grid)"/>
 
   <!-- مؤشر الحالة (Status Pill) -->
-  <g transform="translate(100, 180)">
-    <rect width="250" height="44" rx="22" fill="#141414" stroke="#222222" stroke-width="1"/>
-    <circle cx="28" cy="22" r="6" fill="#00FF66"/>
-    <text x="50" y="27" font-family="Inter, sans-serif" font-size="18" font-weight="500" fill="#888888">Open to new projects</text>
-  </g>
 
   <!-- النصوص الأساسية -->
   <g transform="translate(100, 320)">
