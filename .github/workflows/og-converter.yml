@@ -1,6 +1,7 @@
 name: Generate OG Image
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - 'assets/icons/og-cover.svg'
@@ -21,7 +22,7 @@ jobs:
 
       - name: Convert SVG to PNG
         run: |
-          rsvg-convert -w 1200 -h 630 assets/icons/og-cover.svg > assets/images/og-cover.png
+          rsvg-convert -w 1200 -h 630 assets/icons/og-cover.svg > assets/icons/og-cover.png
 
       - name: Commit and Push PNG
         uses: stefanzweifel/git-auto-commit-action@v5
