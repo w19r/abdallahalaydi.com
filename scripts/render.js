@@ -4,59 +4,43 @@ async function loadContent() {
   try {
     const res = await fetch('data/content.json');
     siteData = await res.json();
+    window.siteData = siteData; // إتاحة البيانات لملف app.js لتبديل العنوان
 
-    // 1. تحديث الهيرو والحالة
-    document.getElementById('status-text').textContent = siteData.status;
-    document.getElementById('hero-title').textContent = siteData.hero.quietTitle;
-    document.getElementById('hero-bio').textContent = siteData.hero.bio;
+    // 1.  الهيرو والحالة
+    if (siteData.status) {
+      document.getElementById('status-text').textContent = siteData.status;
+    }
+    if (siteData.hero) {
+      document.getElementById('hero-title').textContent = siteData.hero.quietTitle;
+      document.getElementById('hero-bio').textContent = siteData.hero.bio;
+    }
 
     // 2. رسم المشاريع (Craft)
     const projectsContainer = document.getElementById('projects-list');
-    projectsContainer.innerHTML = siteData.projects.map(proj => `
-      <article class="project-item" data-id="${proj.id}">
-        <div class="project-header">
-          <span class="project-title">${proj.title}</span>
-          <span class="mono-meta">${proj.date}</span>
-        </div>
-        <p class="project-summary">${proj.summary}</p>
-      </article>
-    `).join('');
-
-    // تفعيل النافذة المنزلقة للمشاريع
-    document.querySelectorAll('.project-item').forEach(el => {
-      el.addEventListener('click', () => openProjectDrawer(el.dataset.id));
-    });
-
-    // 3. رسم العوالم (Worlds)
-    const worldsContainer = document.getElementById('worlds-list');
-    worldsContainer.innerHTML = siteData.worlds.map(w => `
-      <a href="${w.url}" target="_blank" rel="noopener" class="world-card">
-        <span class="world-domain">${w.domain}</span>
-        <div class="world-title">${w.title}</div>
-        <p class="world-desc">${w.description}</p>
-      </a>
-    `).join('');
-
-    // 4. رسم بطاقات الحياة (Vibe Bento Cards) - الكود المحدث!
-    const vibeContainer = document.getElementById('vibe-grid');
-    if (vibeContainer && siteData.interests) {
-      vibeContainer.innerHTML = siteData.interests.map(item => `
-        <a href="${item.url || '#'}" ${item.url && item.url !== '#' ? 'target="_blank" rel="noopener"' : ''} class="vibe-card">
-          <div class="vibe-card-top">
-            <span class="vibe-tag">${item.category}</span>
-            ${item.badge ? `<span class="vibe-badge">${item.badge}</span>` : ''}
+    if (projectsContainer && siteData.projects) {
+      projectsContainer.innerHTML = siteData.projects.map(proj => `
+        <article class="project-item" data-id="${proj.id}">
+          <div class="project-header">
+            <span class="project-title">${proj.title}</span>
+            <span class="mono-meta">${proj.date}</span>
           </div>
-          <div>
-            <div class="vibe-card-title">${item.title}</div>
-            <p class="vibe-card-sub">${item.note}</p>
-          </div>
-        </a>
+          <p class="project-summary">${proj.summary}</p>
+        </article>
       `).join('');
+
+      //  النافذة المنزلقة للمشاريع
+      document.querySelectorAll('.project-item').forEach(el => {
+        el.addEventListener('click', () => openProjectDrawer(el.dataset.id));
+      });
     }
 
-    // 5. تحديث قسم Now
-    document.getElementById('now-label').textContent = siteData.now.date;
-    document.getElementById('now-text').textContent = siteData.now.text;
+    // 3. تحديث قسم Now
+    if (siteData.now) {
+      const nowLabel = document.getElementById('now-label');
+      const nowText = document.getElementById('now-text');
+      if (nowLabel) nowLabel.textContent = siteData.now.date;
+      if (nowText) nowText.textContent = siteData.now.text;
+    }
 
   } catch (err) {
     console.error('Error loading site data:', err);
@@ -64,13 +48,14 @@ async function loadContent() {
 }
 
 function openProjectDrawer(projectId) {
+  if (!siteData || !siteData.projects) return;
   const proj = siteData.projects.find(p => p.id === projectId);
   if (!proj) return;
 
   document.getElementById('drawer-date').textContent = proj.date;
   document.getElementById('drawer-title').textContent = proj.title;
   document.getElementById('drawer-description').textContent = proj.fullDescription;
-  document.getElementById('drawer-tags').innerHTML = proj.stack.map(t => `<span class="tag">${t}</span>`).join('');
+  document.getElementById('drawer-tags').innerHTML = (proj.stack || []).map(t => `<span class="tag">${t}</span>`).join('');
   document.getElementById('drawer-live').href = proj.liveUrl;
   document.getElementById('drawer-repo').href = proj.repoUrl;
 
@@ -91,8 +76,9 @@ function openProjectDrawer(projectId) {
 }
 
 document.addEventListener('DOMContentLoaded', loadContent);
+
 /* ==========================================
-   Letterboxd Upgraded Fetcher
+   Letterboxd  Fetcher
    ========================================== */
 function getRelativeTime(dateString) {
   const diff = Date.now() - new Date(dateString).getTime();
