@@ -1,22 +1,25 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
-  <!-- الخلفية والشبكة الهندسية -->
   <rect width="1200" height="630" fill="#0A0A0A"/>
-  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1A1A1A" stroke-width="1"/>
-  </pattern>
-  <rect width="1200" height="630" fill="url(#grid)"/>
-
-  <!-- مؤشر الحالة (Status Pill) -->
-
-  <!-- النصوص الأساسية -->
-  <g transform="translate(100, 320)">
-    <text x="0" y="0" font-family="Inter, sans-serif" font-size="84" font-weight="600" fill="#FAFAFA" letter-spacing="-3px">abdallah.</text>
-    <text x="0" y="65" font-family="Inter, sans-serif" font-size="32" font-weight="400" fill="#888888">Computer Systems Engineering</text>
-    <text x="0" y="115" font-family="Inter, sans-serif" font-size="24" font-weight="400" fill="#555555">I build quiet, lasting things for the web.</text>
+  
+  <!-- إطار النافذة -->
+  <rect x="80" y="80" width="1040" height="470" rx="16" fill="#111111" stroke="#222222" stroke-width="2"/>
+  
+  <!-- نقاط التحكم الثلاثة -->
+  <g transform="translate(120, 120)">
+    <circle cx="10" cy="10" r="8" fill="#FF5F56"/>
+    <circle cx="38" cy="10" r="8" fill="#FFBD2E"/>
+    <circle cx="66" cy="10" r="8" fill="#27C93F"/>
   </g>
 
-  <!-- رابط الموقع السفلي -->
-  <g transform="translate(100, 540)">
-    <text x="0" y="0" font-family="JetBrains Mono, monospace" font-size="22" fill="#444444">abdallahalaydi.com</text>
+  <!-- الجملة الفنية البارزة -->
+  <g transform="translate(130, 280)">
+    <text x="0" y="0" font-family="Inter, sans-serif" font-size="76" font-weight="600" fill="#FAFAFA" letter-spacing="-2px">I build quiet, lasting</text>
+    <text x="0" y="85" font-family="Inter, sans-serif" font-size="76" font-weight="600" fill="#FAFAFA" letter-spacing="-2px">things for the web.</text>
+  </g>
+
+  <!-- بيانات المهندس -->
+  <g transform="translate(130, 480)">
+    <text x="0" y="0" font-family="Inter, sans-serif" font-size="24" font-weight="500" fill="#888888">Abdallah Alaydi — Engineering Student</text>
+    <text x="0" y="35" font-family="JetBrains Mono, monospace" font-size="20" fill="#555555">abdallahalaydi.com</text>
   </g>
 </svg>
