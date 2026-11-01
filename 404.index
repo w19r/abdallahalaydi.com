@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <!-- ==========================================
+       1. الإعدادات الأساسية ومحركات البحث (SEO)
+       ========================================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 Not Found — Abdallah Alaydi</title>
+  <meta name="description" content="The page you are looking for doesn't exist." />
+  <meta name="author" content="Abdallah Alaydi" />
+  <!-- نمنع محركات البحث من أرشفة صفحة الخطأ -->
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- ==========================================
+       2. أيقونات المتصفحات والهواتف (Favicons)
+       ========================================== -->
+  <meta name="theme-color" content="#0A0A0A" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#FAFAFA" media="(prefers-color-scheme: light)" />
+
+  <!--  قبل كل مسار لضمان عملها في أي رابط خاطئ -->
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- ==========================================
+       3. وسوم المشاركة المخصصة للخطأ (Open Graph)
+       ========================================== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Abdallah Alaydi" />
+  <meta property="og:title" content="404 — Page Not Found" />
+  <meta property="og:description" content="Oops! The page you are looking for quietly disappeared or doesn't exist." />
+  <meta property="og:image" content="https://abdallahalaydi.com/assets/icons/og-404.png" />
+  <meta property="og:image:secure_url" content="https://abdallahalaydi.com/assets/icons/og-404.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- ==========================================
+       4. وسوم المشاركة لمنصة إكس (Twitter)
+       ========================================== -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="404 — Page Not Found" />
+  <meta name="twitter:description" content="Oops! The page you are looking for quietly disappeared or doesn't exist." />
+  <meta name="twitter:image" content="https://abdallahalaydi.com/assets/icons/og-404.png" />
+
+  <!-- ==========================================
+       5. الخطوط
+       ========================================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+
+  <!-- ==========================================
+       6. ملفات التنسيق (بمسارات مطلقة /)
+       ========================================== -->
+  <link rel="stylesheet" href="/styles/tokens.css" />
+  <link rel="stylesheet" href="/styles/base.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/components.css" />
+  <link rel="stylesheet" href="/styles/skeleton.css" />
+
+</head>
+<body>
+
+  <main class="container">
+    <!-- الشريط العلوي (بدون أزرار Vibe و Craft لأنها صفحة خطأ) -->
+    <header class="header cascade-item" style="--step: 1;">
+      <a href="/" class="brand" style="text-decoration: none;">abdallah.</a>
+      
+      <div class="header-controls">
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
+          <svg id="theme-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- رسالة الخطأ -->
+    <section class="intro cascade-item" style="--step: 2;" style="min-height: 50vh; display: flex; flex-direction: column; justify-content: center;">
+      <div class="status-pill">
+        <span class="status-dot" style="background-color: #ff453a;"></span>
+        <span>404 Error</span>
+      </div>
+      
+      <h1 class="hero-title">
+        Quietly missing.
+      </h1>
+      
+      <p class="intro-paragraph">
+        The page you are looking for doesn't exist, has been moved, or is temporarily unavailable.
+      </p>
+
+      <!-- زر العودة بلمسة هندسية -->
+      <div style="margin-top: 32px;">
+        <a href="/" style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--text-primary); text-decoration: none; border-bottom: 1px solid var(--border-color); padding-bottom: 4px; transition: opacity 0.2s;">
+          > cd /home
+        </a>
+      </div>
+    </section>
+
+    <!-- التذييل السفلي -->
+    <footer class="footer cascade-item" style="--step: 3;" style="margin-top: auto;">
+      <div class="footer-links">
+        <a href="https://github.com/w19r" target="_blank" rel="noopener">github</a>
+      </div>
+      <span class="copyright">© 2026 Abdallah Alaydi</span>
+    </footer>
+  </main>
+
+  <!-- سكربت صغير مخصص لصفحة 404 لضمان عمل الثيم الليلي بدون الاعتماد على app.js لتجنب أي أخطاء -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const root = document.documentElement;
+      const themeBtn = document.getElementById('theme-toggle');
+      
+      const savedTheme = localStorage.getItem('theme') || 
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      
+      root.setAttribute('data-theme', savedTheme);
+
+      if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+          const currentTheme = root.getAttribute('data-theme');
+          const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          root.setAttribute('data-theme', nextTheme);
+          localStorage.setItem('theme', nextTheme);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
