@@ -8,7 +8,7 @@
 
   <!-- النصوص الأساسية -->
   <g transform="translate(100, 280)">
-    <text x="0" y="0" font-family="Inter, sans-serif" font-size="84" font-weight="600" fill="#FAFAFA" letter-spacing="-3px">abdallah.</text>
+    <text x="0" y="0" font-family="Inter, sans-serif" font-size="84" font-weight="600" fill="#FAFAFA" letter-spacing="-3px">abdallah. </text>
     <text x="0" y="65" font-family="Inter, sans-serif" font-size="32" font-weight="400" fill="#888888">Computer Systems Engineer</text>
     <text x="0" y="115" font-family="Inter, sans-serif" font-size="24" font-weight="400" fill="#555555">I build quiet, lasting things for the web.</text>
   </g>
