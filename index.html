@@ -15,21 +15,20 @@
   <!-- ==========================================
        2. أيقونات المتصفحات والهواتف (Favicons & PWA)
        ========================================== -->
-  <!-- لون شريط المتصفح يتكيف مع الوضع الليلي والنهاري -->
   <meta name="theme-color" content="#0A0A0A" media="(prefers-color-scheme: dark)" />
   <meta name="theme-color" content="#FAFAFA" media="(prefers-color-scheme: light)" />
 
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
   <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png" />
-  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="manifest" href="site.webmanifest" />
   
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Abdallah" />
 
   <!-- ==========================================
-       3. وسوم المشاركة (Open Graph - WhatsApp, Telegram, Facebook, LinkedIn)
+       3. وسوم المشاركة (Open Graph)
        ========================================== -->
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="en_US" />
@@ -55,7 +54,7 @@
   <meta name="twitter:image:alt" content="Abdallah Alaydi Personal Website" />
 
   <!-- ==========================================
-       5. الخطوط: Inter للنصوص و JetBrains Mono للعناوين الفرعية والتواريخ
+       5. الخطوط: Inter و JetBrains Mono
        ========================================== -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -71,7 +70,7 @@
   <link rel="stylesheet" href="styles/skeleton.css" />
 
   <!-- ==========================================
-       7. بيانات مهيكلة لمحركات البحث والذكاء الاصطناعي (JSON-LD)
+       7. بيانات مهيكلة (JSON-LD)
        ========================================== -->
   <script type="application/ld+json">
   {
@@ -90,9 +89,9 @@
 <body>
 
   <main class="container">
-    <!-- الشريط العلوي المحدث: شعار + زر التبديل Craft/Vibe + زر الإضاءة -->
+    <!-- الشريط العلوي -->
     <header class="header cascade-item" style="--step: 1;">
-      <a href="/" class="brand">abdallah.</a>
+      <span class="brand" id="brand-logo" style="cursor: pointer;" title="Switch mode">abdallah.</span>
       
       <div class="header-controls">
         <!-- كبسولة التبديل بين البرمجة والحياة -->
@@ -117,12 +116,12 @@
         <span id="status-text">Open to new projects</span>
       </div>
       
-      <h1 id="hero-title" class="hero-title" title="Click to switch vibe">
+      <h1 id="hero-title" class="hero-title" style="cursor: pointer;" title="Click to switch vibe">
         I build quiet, lasting things for the web.
       </h1>
       
       <p id="hero-bio" class="intro-paragraph">
-        Computer Systems Engineering student. I love vibing on coding, building lasting systems, and fixing bugs.
+        Computer Systems Engineering student. Building simple, fast, and clean web projects.
       </p>
     </section>
 
@@ -139,14 +138,11 @@
             <div class="skeleton-line title"></div>
             <div class="skeleton-line sub"></div>
           </div>
-          <div class="skeleton-row">
-            <div class="skeleton-line title"></div>
-            <div class="skeleton-line sub"></div>
-          </div>
         </div>
       </section>
+
       <!-- قسم الوقت الحالي (Now) -->
-      <section class="section cascade-item" style="--step: 5;">
+      <section class="section cascade-item" style="--step: 4;">
         <h2 class="section-label" id="now-label">NOW</h2>
         <p id="now-text" class="muted-paragraph">
           <span class="skeleton-line full"></span>
@@ -155,20 +151,13 @@
       
     </div>
 
-        <!-- ========================================== -->
+    <!-- ========================================== -->
     <!-- 2. واجهة الـ VIBE (تظهر عند الضغط على Vibe) -->
     <!-- ========================================== -->
     <div id="vibe-view" class="view-section">
+      <!-- قسم Letterboxd  -->
       <section class="section cascade-item" style="--step: 3;">
-        <h2 class="section-label">LIFE & ROTATION</h2>
-        <!-- شبكة البطاقات (Bento Grid) -->
-        <div id="vibe-grid" class="vibe-bento-grid"></div>
-      </section>
-
-      <!-- قسم Letterboxd المضاف حديثاً -->
-      <section class="section cascade-item" style="--step: 4;">
         <div class="lb-theme-card">
-          <!-- الشريط العلوي -->
           <div class="lb-topbar">
             <div class="lb-section-title">
               <div class="lb-dots">
@@ -178,7 +167,7 @@
               </div>
               <span>RECENTLY WATCHED</span>
             </div>
-            <a href="https://letterboxd.com/w19r/" target="_blank" class="lb-all-link">
+            <a href="https://letterboxd.com/w19r/" target="_blank" rel="noopener" class="lb-all-link">
               @w19r ↗
             </a>
           </div>
@@ -197,9 +186,8 @@
       </section>
     </div>
 
-
     <!-- التذييل السفلي -->
-    <footer class="footer cascade-item" style="--step: 6;">
+    <footer class="footer cascade-item" style="--step: 5;">
       <div class="footer-links">
         <a href="https://github.com/w19r" target="_blank" rel="noopener">github</a>
         <button id="copy-email" class="link-btn" data-email="me@abdallahalaydi.com">email</button>
@@ -212,18 +200,15 @@
   <div id="project-drawer" class="drawer-backdrop" aria-hidden="true">
     <div class="drawer-panel" role="dialog" aria-modal="true">
       
-      <!-- 1. حاوية الصورة في الأعلى دائماً -->
       <div id="drawer-image-wrapper" class="drawer-image-wrapper" style="display: none;">
         <img id="drawer-image" src="" alt="Project Preview" loading="eager">
       </div>
 
-      <!-- 2. قسم الهيدر (التاريخ + زر الإغلاق) -->
       <div class="drawer-header">
         <span id="drawer-date" class="mono-meta"></span>
         <button id="drawer-close" class="close-btn" aria-label="Close details">✕</button>
       </div>
 
-      <!-- 3. باقي التفاصيل -->
       <h3 id="drawer-title" class="drawer-title"></h3>
       <p id="drawer-description" class="drawer-desc"></p>
       <div id="drawer-tags" class="tag-row"></div>
