@@ -1,32 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
   <defs>
-    <!-- تدرج يعطي إيحاء بسطح ملموس -->
-    <linearGradient id="key-surface" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#1E1E1E" />
-      <stop offset="100%" stop-color="#0F0F0F" />
-    </linearGradient>
-    <linearGradient id="key-border" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#383838" />
-      <stop offset="100%" stop-color="#141414" />
+    <!-- تدرج يجعل الحرف يذوب في الخلفية من الأسفل -->
+    <linearGradient id="fade-text" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9" />
+      <stop offset="65%" stop-color="#FFFFFF" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0" />
     </linearGradient>
   </defs>
 
-  <!-- خلفية سوداء صريحة -->
-  <rect width="1200" height="630" fill="#080808" />
+  <rect width="1200" height="630" fill="#0A0A0A" />
 
-  <!-- ظل الزر السفلي -->
-  <rect x="490" y="217" width="220" height="220" rx="48" fill="#000000" />
-  
-  <!-- جسم الزر مع إضاءة الحواف العلوية -->
-  <rect x="490" y="205" width="220" height="220" rx="48" fill="url(#key-surface)" stroke="url(#key-border)" stroke-width="2" />
-
-  <!-- الشعار في قلب الزر -->
-  <text x="582" y="355" 
+  <!-- حرف a يتلاشى في الظلام -->
+  <text x="555" y="410" 
         font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" 
-        font-weight="700" 
-        font-size="130" 
-        fill="#FAFAFA" 
+        font-weight="800" 
+        font-size="310" 
+        fill="url(#fade-text)" 
         text-anchor="middle" 
-        letter-spacing="-5">a</text>
-  <circle cx="645" cy="340" r="13" fill="#FAFAFA" />
+        letter-spacing="-12">a</text>
+        
+  <!-- النقطة ساطعة وحادة لكسر التلاشي -->
+  <circle cx="700" cy="375" r="28" fill="#FFFFFF" />
 </svg>
