@@ -1,28 +1,32 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
-  <!-- خلفية بيضاء هادئة -->
-  <rect width="1200" height="630" fill="#FAFAFA" />
-  
-  <!-- شبكة النقاط المركزية -->
   <defs>
-    <pattern id="mono-dots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
-      <circle cx="12" cy="12" r="2" fill="#0A0A0A" fill-opacity="0.15" />
-    </pattern>
+    <!-- تدرج يعطي إيحاء بسطح ملموس -->
+    <linearGradient id="key-surface" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E1E1E" />
+      <stop offset="100%" stop-color="#0F0F0F" />
+    </linearGradient>
+    <linearGradient id="key-border" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#383838" />
+      <stop offset="100%" stop-color="#141414" />
+    </linearGradient>
   </defs>
-  
-  <!-- هالة النقاط المتدرجة -->
-  <circle cx="600" cy="315" r="220" fill="url(#mono-dots)" />
-  <circle cx="600" cy="315" r="160" fill="none" stroke="#0A0A0A" stroke-opacity="0.08" stroke-width="1" stroke-dasharray="4 4" />
-  
-  <!-- نواة الشعار البيضاء -->
-  <circle cx="600" cy="315" r="95" fill="#FAFAFA" stroke="#0A0A0A" stroke-opacity="0.12" stroke-width="1.5" />
 
-  <!-- الشعار بالأسود النقي -->
-  <text x="582" y="362" 
+  <!-- خلفية سوداء صريحة -->
+  <rect width="1200" height="630" fill="#080808" />
+
+  <!-- ظل الزر السفلي -->
+  <rect x="490" y="217" width="220" height="220" rx="48" fill="#000000" />
+  
+  <!-- جسم الزر مع إضاءة الحواف العلوية -->
+  <rect x="490" y="205" width="220" height="220" rx="48" fill="url(#key-surface)" stroke="url(#key-border)" stroke-width="2" />
+
+  <!-- الشعار في قلب الزر -->
+  <text x="582" y="355" 
         font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" 
         font-weight="700" 
-        font-size="140" 
-        fill="#0A0A0A" 
+        font-size="130" 
+        fill="#FAFAFA" 
         text-anchor="middle" 
-        letter-spacing="-6">a</text>
-  <circle cx="648" cy="346" r="14" fill="#0A0A0A" />
+        letter-spacing="-5">a</text>
+  <circle cx="645" cy="340" r="13" fill="#FAFAFA" />
 </svg>
