@@ -1,22 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
-  <rect width="1200" height="630" fill="#0A0A0A" />
+  <!-- خلفية فاتحة نقية جداً -->
+  <rect width="1200" height="630" fill="#FAFAFA" />
 
-  <!-- حرف عملاق في الزاوية يملأ الفراغ كفن تجريدي -->
-  <text x="820" y="690" 
-        font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" 
-        font-weight="800" 
-        font-size="850" 
-        fill="#141414" 
-        text-anchor="middle" 
-        letter-spacing="-30">a</text>
-
-  <!-- الشعار الحقيقي بحجم صغير ومتوازن في المنتصف -->
-  <text x="585" y="345" 
+  <!-- الشعار صغير جداً في المركز ليعطي هيبة المساحة الفارغة -->
+  <text x="588" y="340" 
         font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" 
         font-weight="700" 
-        font-size="110" 
-        fill="#FAFAFA" 
+        font-size="95" 
+        fill="#0A0A0A" 
         text-anchor="middle" 
         letter-spacing="-4">a</text>
-  <circle cx="638" cy="333" r="11" fill="#FAFAFA" />
+  <circle cx="632" cy="329" r="9.5" fill="#0A0A0A" />
 </svg>
