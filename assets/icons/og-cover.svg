@@ -1,20 +1,20 @@
-<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
-  <!-- الخلفية والشبكة الهندسية -->
-  <rect width="1200" height="630" fill="#0A0A0A"/>
-  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1A1A1A" stroke-width="1"/>
-  </pattern>
-  <rect width="1200" height="630" fill="url(#grid)"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!-- خلفية سوداء -->
+  <rect width="1200" height="630" fill="#0A0A0A" />
+  
+  <!-- إطار خارجي وهمي بحجم بطاقة -->
+  <rect x="420" y="135" width="360" height="360" rx="48" fill="none" stroke="#FFFFFF" stroke-opacity="0.06" stroke-width="1.5" />
+  
+  <!-- المربع المركزي الأبيض -->
+  <rect x="490" y="205" width="220" height="220" rx="32" fill="#FAFAFA" />
 
-  <!-- النصوص الأساسية -->
-  <g transform="translate(100, 280)">
-    <text x="0" y="0" font-family="Inter, sans-serif" font-size="84" font-weight="600" fill="#FAFAFA" letter-spacing="-3px">abdallah.</text>
-    <text x="0" y="65" font-family="Inter, sans-serif" font-size="32" font-weight="400" fill="#888888">Computer Systems Engineer</text>
-    <text x="0" y="115" font-family="Inter, sans-serif" font-size="24" font-weight="400" fill="#555555">I build quiet, lasting things for the web.</text>
-  </g>
-
-  <!-- رابط الموقع السفلي -->
-  <g transform="translate(100, 540)">
-    <text x="0" y="0" font-family="JetBrains Mono, monospace" font-size="22" fill="#444444">abdallahalaydi.com</text>
-  </g>
+  <!-- الشعار بالأسود داخل المربع الأبيض -->
+  <text x="580" y="362" 
+        font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" 
+        font-weight="700" 
+        font-size="145" 
+        fill="#0A0A0A" 
+        text-anchor="middle" 
+        letter-spacing="-6">a</text>
+  <circle cx="648" cy="345" r="15" fill="#0A0A0A" />
 </svg>
