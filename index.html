@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" data-theme="dark">
 <head>
   <!-- ==========================================
 1. الإعدادات الأساسية ومحركات البحث (SEO)
@@ -22,7 +22,7 @@
   <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png" />
   <link rel="manifest" href="site.webmanifest" />
-  
+
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Abdallah" />
@@ -93,7 +93,7 @@
     <!-- الشريط العلوي -->
     <header class="header cascade-item" style="--step: 1;">
       <span class="brand" id="brand-logo" style="cursor: pointer;" title="Switch mode">abdallah.</span>
-      
+
       <div class="header-controls">
         <!-- كبسولة التبديل بين البرمجة والحياة -->
         <div class="mode-switch" role="tablist">
@@ -116,11 +116,11 @@
         <span class="status-dot"></span>
         <span id="status-text">Engineering Student @AUG</span>
       </div>
-      
+
       <h1 id="hero-title" class="hero-title" style="cursor: pointer;" title="Click to switch vibe">
         I build quiet, lasting things for the web.
       </h1>
-      
+
       <p id="hero-bio" class="intro-paragraph">
         Computer Systems Engineering student. Building simple, fast, and clean web projects.
       </p>
@@ -130,7 +130,7 @@
     <!-- 1. واجهة الـ CRAFT (تظهر افتراضياً) -->
     <!-- ========================================== -->
     <div id="craft-view" class="view-section active-view">
-      
+
       <!-- قسم المشاريع -->
       <section class="section cascade-item" style="--step: 3;">
         <h2 class="section-label">PROJECTS</h2>
@@ -149,14 +149,14 @@
           <span class="skeleton-line full"></span>
         </p>
       </section>
-      
+
     </div>
 
     <!-- ========================================== -->
     <!-- 2. واجهة الـ VIBE (تظهر عند الضغط على Vibe) -->
     <!-- ========================================== -->
     <div id="vibe-view" class="view-section">
-      <!-- قسم Letterboxd  -->
+      <!-- قسم Letterboxd -->
       <section class="section cascade-item" style="--step: 3;">
         <div class="lb-theme-card">
           <div class="lb-topbar">
@@ -180,7 +180,7 @@
             <div class="lb-skeleton"></div>
             <div class="lb-skeleton"></div>
           </div>
-          
+
           <!-- المراجعة النصية -->
           <div id="lb-review-banner" class="lb-review-pill" style="display: none;"></div>
         </div>
@@ -200,3 +200,39 @@
   <!-- النافذة المنزلقة لتفاصيل المشروع -->
   <div id="project-drawer" class="drawer-backdrop" aria-hidden="true">
     <div class="drawer-panel" role="dialog" aria-modal="true">
+
+      <div id="drawer-mockup" style="display: none;"></div>
+
+      <div id="drawer-image-wrapper" class="drawer-image-wrapper" style="display: none;">
+        <img id="drawer-image" src="" alt="Project Preview" loading="eager">
+      </div>
+
+      <div class="drawer-header">
+        <div class="drawer-meta-group">
+          <span id="drawer-date" class="mono-meta"></span>
+          <span id="drawer-status" class="live-badge" style="display: none;"></span>
+        </div>
+        <button id="drawer-close" class="close-btn" aria-label="Close details">✕</button>
+      </div>
+
+      <h3 id="drawer-title" class="drawer-title"></h3>
+      <p id="drawer-description" class="drawer-desc"></p>
+      <ul id="drawer-highlights" class="drawer-highlights" style="display: none;"></ul>
+      <div id="drawer-tags" class="tag-row"></div>
+      <div class="drawer-actions">
+        <a id="drawer-case-study" href="#" class="lux-btn primary" style="display: none;">Case Study →</a>
+        <a id="drawer-live" href="#" target="_blank" rel="noopener" class="lux-btn secondary">Visit Site ↗</a>
+        <a id="drawer-repo" href="#" target="_blank" rel="noopener" class="lux-btn secondary">Source Code</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- إشعار نسخ الإيميل -->
+  <div id="toast" class="toast">Email copied to clipboard</div>
+
+  <script src="scripts/render.js?v=3"></script>
+  <script src="scripts/app.js?v=3"></script>
+</body>
+
+</html>
