@@ -1,5 +1,5 @@
 {
-  "status": "Engineering Student @ AUG ",
+  "status": "Engineering Student @ AUG",
   "hero": {
     "quietTitle": "I build quiet, lasting things for the web.",
     "vibeTitle": "I love vibing on coding, building lasting things & fixing bugs.",
@@ -11,15 +11,22 @@
       "title": "Family Archive",
       "summary": "A quiet memorial photo & family archive.",
       "date": "Aug 2026",
-      "fullDescription": "A custom data driven family archive website to preserve historical photos and records, built with a focus on minimalism and longevity.",
-      "image": "assets/images/Family-Archive.png",
-      "stack": ["HTML/CSS", "JSON Engine", "Design System"],
+      "status": "LIVE PRODUCTION · FULL-STACK PWA",
+      "mockup": true,
+      "fullDescription": "A full-stack family memorial archive engineered for longevity, instant media delivery, and effortless mobile administration.",
+      "highlights": [
+        "Git-backed CMS: Automated image compression and JSON publishing via GitHub API & Telegram Webhook bot.",
+        "Zero-latency UX: Progressive blur-up images, offline PWA caching, and optimistic comment drawers.",
+        "Hardened API: FastAPI + PostgreSQL backend with PBKDF2 hashing, JWT auth, and custom rate limiting."
+      ],
+      "stack": ["FastAPI", "PostgreSQL", "Cloudflare", "GitHub API", "PWA", "Telegram Bot"],
+      "caseStudyUrl": "projects/archive/",
       "liveUrl": "https://archive.abdallahalaydi.com",
-      "repoUrl": "https://github.com/w19r"
+      "repoUrl": "https://github.com/w19r/archive-api"
     }
   ],
   "now": {
     "date": "NOW · NOV 2026",
-    "text": "Planning a student focused web platform equipped with AI tools and academic resources. "
+    "text": "Planning a student focused web platform equipped with AI tools and academic resources."
   }
 }

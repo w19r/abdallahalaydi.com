@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Family Archive — Case Study | Abdallah Alaydi</title>
+  <meta name="description" content="System architecture and engineering case study behind archive.abdallahalaydi.com." />
+  <link rel="canonical" href="https://abdallahalaydi.com/projects/archive/" />
+
+  <link rel="icon" type="image/svg+xml" href="../../assets/icons/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../../styles/tokens.css" />
+  <link rel="stylesheet" href="../../styles/base.css" />
+  <link rel="stylesheet" href="../../styles/layout.css" />
+  <link rel="stylesheet" href="../../styles/components.css" />
+  <link rel="stylesheet" href="../../styles/case-study.css" />
+</head>
+<body>
+
+  <main class="container">
+    <header class="header cascade-item" style="--step: 1;">
+      <a href="../../" class="cs-back">← abdallah.</a>
+
+      <div class="header-controls">
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
+          <svg id="theme-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <section class="cs-header cascade-item" style="--step: 2;">
+      <div class="drawer-meta-group">
+        <span class="mono-meta">CASE STUDY · AUG 2026</span>
+        <span class="live-badge">LIVE PRODUCTION</span>
+      </div>
+
+      <h1 class="cs-title">Family Archive</h1>
+      <p class="cs-lead">
+        A resilient, data-driven memorial archive built to preserve historical family photographs, timelines, and shared memories with zero recurring hosting overhead.
+      </p>
+
+      <div class="cs-actions">
+        <a href="https://archive.abdallahalaydi.com" target="_blank" rel="noopener" class="lux-btn primary">Visit Live Archive ↗</a>
+        <a href="https://github.com/w19r/archive-api" target="_blank" rel="noopener" class="lux-btn secondary">API Source Code</a>
+      </div>
+    </section>
+
+    <div class="cascade-item" style="--step: 3;">
+      <div class="mockup-stage" aria-hidden="true">
+        <div class="mockup-desktop">
+          <div class="mk-topbar">
+            <span class="mk-dot"></span>
+            <span class="mk-dot"></span>
+            <span class="mk-dot"></span>
+            <span class="mk-url">archive.abdallahalaydi.com</span>
+          </div>
+          <div class="mk-desktop-body">
+            <div class="mk-hero-bar">
+              <span class="mk-pill-line"></span>
+              <span class="mk-pill-tag"></span>
+            </div>
+            <div class="mk-grid">
+              <div class="mk-card"><div class="mk-card-thumb"></div><div class="mk-card-line"></div></div>
+              <div class="mk-card"><div class="mk-card-thumb"></div><div class="mk-card-line"></div></div>
+              <div class="mk-card"><div class="mk-card-thumb"></div><div class="mk-card-line"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="mockup-phone">
+          <div class="mk-notch"></div>
+          <div class="mk-phone-photo"></div>
+          <div class="mk-phone-drawer">
+            <div class="mk-cm-row short"></div>
+            <div class="mk-cm-row"></div>
+            <div class="mk-cm-row"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="cs-section cascade-item" style="--step: 4;">
+      <h2 class="section-label">01 / PROBLEM & GOAL</h2>
+      <p class="cs-body">
+        Family photos scattered across messaging apps lose their dates, stories, and original resolution over time. The goal was to build a fast, distraction-free archive that works offline as an installable mobile app and allows non-technical family members to publish new memories directly from Telegram.
+      </p>
+    </section>
+
+    <section class="cs-section cascade-item" style="--step: 5;">
+      <h2 class="section-label">02 / SYSTEM ARCHITECTURE</h2>
+      <div class="cs-arch-list">
+        <div class="cs-arch-item">
+          <div class="cs-arch-head">
+            <span class="cs-arch-title">Static Edge & PWA Frontend</span>
+            <span class="cs-arch-tag">GitHub Pages + Cloudflare</span>
+          </div>
+          <p class="cs-arch-desc">
+            Zero-framework modular vanilla JS frontend with Service Worker caching, progressive blur-up image loading, pinch-to-zoom lightbox, and client-side printable PDF generation.
+          </p>
+        </div>
+
+        <div class="cs-arch-item">
+          <div class="cs-arch-head">
+            <span class="cs-arch-title">Comments & Auth Backend</span>
+            <span class="cs-arch-tag">FastAPI + PostgreSQL</span>
+          </div>
+          <p class="cs-arch-desc">
+            REST API deployed on Render handling user accounts, PBKDF2-HMAC-SHA256 password hashing, JWT sessions, and sliding-window in-memory rate limiting against spam.
+          </p>
+        </div>
+
+        <div class="cs-arch-item">
+          <div class="cs-arch-head">
+            <span class="cs-arch-title">Git-Backed CMS & Telegram Control</span>
+            <span class="cs-arch-tag">GitHub API + Webhook Bot</span>
+          </div>
+          <p class="cs-arch-desc">
+            Sending a photo to a private Telegram bot automatically generates thumbnail, viewing, and blur variants via Pillow, commits them to GitHub, and updates the live JSON index.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section cascade-item" style="--step: 6;">
+      <h2 class="section-label">03 / TECH STACK</h2>
+      <div class="tag-row">
+        <span class="tag">Python / FastAPI</span>
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">Vanilla JS (ES6+)</span>
+        <span class="tag">Cloudflare Workers</span>
+        <span class="tag">GitHub REST API</span>
+        <span class="tag">Telegram Bot API</span>
+        <span class="tag">Service Workers (PWA)</span>
+      </div>
+    </section>
+
+    <footer class="footer cascade-item" style="--step: 7;">
+      <div class="footer-links">
+        <a href="../../">home</a>
+        <a href="https://archive.abdallahalaydi.com" target="_blank" rel="noopener">live site ↗</a>
+        <a href="https://github.com/w19r" target="_blank" rel="noopener">github</a>
+      </div>
+      <span class="copyright">© 2026 Abdallah Alaydi</span>
+    </footer>
+  </main>
+
+  <script>
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+
+    function applyTheme(theme) {
+      root.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      if (!themeIcon) return;
+      themeIcon.innerHTML = theme === 'light'
+        ? '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>'
+        : '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+    }
+
+    applyTheme(localStorage.getItem('theme') || 'dark');
+    themeBtn?.addEventListener('click', () => {
+      applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    });
+  </script>
+</body>
+</html>

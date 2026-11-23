@@ -2,11 +2,11 @@ let siteData = null;
 
 async function loadContent() {
   try {
-    const res = await fetch('data/content.json');
+    const res = await fetch('data/content.json', { cache: 'no-cache' });
     siteData = await res.json();
     window.siteData = siteData; // إتاحة البيانات لملف app.js لتبديل العنوان
 
-    // 1.  الهيرو والحالة
+    // 1. الهيرو والحالة
     if (siteData.status) {
       document.getElementById('status-text').textContent = siteData.status;
     }
@@ -28,7 +28,7 @@ async function loadContent() {
         </article>
       `).join('');
 
-      //  النافذة المنزلقة للمشاريع
+      // النافذة المنزلقة للمشاريع
       document.querySelectorAll('.project-item').forEach(el => {
         el.addEventListener('click', () => openProjectDrawer(el.dataset.id));
       });
@@ -47,6 +47,41 @@ async function loadContent() {
   }
 }
 
+function buildDeviceMockupHTML() {
+  return `
+    <div class="mockup-stage" aria-hidden="true">
+      <div class="mockup-desktop">
+        <div class="mk-topbar">
+          <span class="mk-dot"></span>
+          <span class="mk-dot"></span>
+          <span class="mk-dot"></span>
+          <span class="mk-url">archive.abdallahalaydi.com</span>
+        </div>
+        <div class="mk-desktop-body">
+          <div class="mk-hero-bar">
+            <span class="mk-pill-line"></span>
+            <span class="mk-pill-tag"></span>
+          </div>
+          <div class="mk-grid">
+            <div class="mk-card"><div class="mk-card-thumb"></div><div class="mk-card-line"></div></div>
+            <div class="mk-card"><div class="mk-card-thumb"></div><div class="mk-card-line"></div></div>
+            <div class="mk-card"><div class="mk-card-thumb"></div><div class="mk-card-line"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="mockup-phone">
+        <div class="mk-notch"></div>
+        <div class="mk-phone-photo"></div>
+        <div class="mk-phone-drawer">
+          <div class="mk-cm-row short"></div>
+          <div class="mk-cm-row"></div>
+          <div class="mk-cm-row"></div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 function openProjectDrawer(projectId) {
   if (!siteData || !siteData.projects) return;
   const proj = siteData.projects.find(p => p.id === projectId);
@@ -59,13 +94,47 @@ function openProjectDrawer(projectId) {
   document.getElementById('drawer-live').href = proj.liveUrl;
   document.getElementById('drawer-repo').href = proj.repoUrl;
 
+  const statusEl = document.getElementById('drawer-status');
+  if (statusEl) {
+    statusEl.textContent = proj.status || '';
+    statusEl.style.display = proj.status ? 'inline-flex' : 'none';
+  }
+
+  const highlightsEl = document.getElementById('drawer-highlights');
+  if (highlightsEl) {
+    if (proj.highlights && proj.highlights.length) {
+      highlightsEl.innerHTML = proj.highlights.map(h => `<li>${h}</li>`).join('');
+      highlightsEl.style.display = 'flex';
+    } else {
+      highlightsEl.innerHTML = '';
+      highlightsEl.style.display = 'none';
+    }
+  }
+
+  const caseStudyBtn = document.getElementById('drawer-case-study');
+  if (caseStudyBtn) {
+    if (proj.caseStudyUrl) {
+      caseStudyBtn.href = proj.caseStudyUrl;
+      caseStudyBtn.style.display = 'inline-flex';
+    } else {
+      caseStudyBtn.style.display = 'none';
+    }
+  }
+
+  const mockupEl = document.getElementById('drawer-mockup');
   const drawerImgWrapper = document.getElementById('drawer-image-wrapper');
   const drawerImg = document.getElementById('drawer-image');
 
-  if (proj.image) {
+  if (proj.mockup && mockupEl) {
+    mockupEl.innerHTML = buildDeviceMockupHTML();
+    mockupEl.style.display = 'block';
+    drawerImgWrapper.style.display = 'none';
+  } else if (proj.image) {
+    if (mockupEl) mockupEl.style.display = 'none';
     drawerImg.src = proj.image;
     drawerImgWrapper.style.display = 'block';
   } else {
+    if (mockupEl) mockupEl.style.display = 'none';
     drawerImg.src = '';
     drawerImgWrapper.style.display = 'none';
   }
@@ -78,7 +147,7 @@ function openProjectDrawer(projectId) {
 document.addEventListener('DOMContentLoaded', loadContent);
 
 /* ==========================================
-   Letterboxd  Fetcher
+   Letterboxd Fetcher
    ========================================== */
 function getRelativeTime(dateString) {
   const diff = Date.now() - new Date(dateString).getTime();

@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
   <!-- ==========================================
-       1. الإعدادات الأساسية ومحركات البحث (SEO)
+1. الإعدادات الأساسية ومحركات البحث (SEO)
        ========================================== -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,7 +13,7 @@
   <link rel="canonical" href="https://abdallahalaydi.com/" />
 
   <!-- ==========================================
-       2. أيقونات المتصفحات والهواتف (Favicons & PWA)
+2. أيقونات المتصفحات والهواتف (Favicons & PWA)
        ========================================== -->
   <meta name="theme-color" content="#0A0A0A" media="(prefers-color-scheme: dark)" />
   <meta name="theme-color" content="#FAFAFA" media="(prefers-color-scheme: light)" />
@@ -28,7 +28,7 @@
   <meta name="apple-mobile-web-app-title" content="Abdallah" />
 
   <!-- ==========================================
-       3. وسوم المشاركة (Open Graph)
+3. وسوم المشاركة (Open Graph)
        ========================================== -->
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="en_US" />
@@ -44,7 +44,7 @@
   <meta property="og:image:alt" content="Abdallah Alaydi Personal Website" />
 
   <!-- ==========================================
-       4. وسوم المشاركة لمنصة إكس (Twitter / X Cards)
+4. وسوم المشاركة لمنصة إكس (Twitter / X Cards)
        ========================================== -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://abdallahalaydi.com/" />
@@ -54,23 +54,24 @@
   <meta name="twitter:image:alt" content="Abdallah Alaydi Personal Website" />
 
   <!-- ==========================================
-       5. الخطوط: Inter و JetBrains Mono
+5. الخطوط: Inter و JetBrains Mono
        ========================================== -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
 
   <!-- ==========================================
-       6. ملفات التنسيق المقسمة (Modular CSS)
+6. ملفات التنسيق المقسمة (Modular CSS)
        ========================================== -->
   <link rel="stylesheet" href="styles/tokens.css" />
   <link rel="stylesheet" href="styles/base.css" />
   <link rel="stylesheet" href="styles/layout.css" />
   <link rel="stylesheet" href="styles/components.css" />
   <link rel="stylesheet" href="styles/skeleton.css" />
+  <link rel="stylesheet" href="styles/case-study.css" />
 
   <!-- ==========================================
-       7. بيانات مهيكلة (JSON-LD)
+7. بيانات مهيكلة (JSON-LD)
        ========================================== -->
   <script type="application/ld+json">
   {
@@ -183,8 +184,6 @@
           <!-- المراجعة النصية -->
           <div id="lb-review-banner" class="lb-review-pill" style="display: none;"></div>
         </div>
-        
-      
       </section>
     </div>
 
@@ -201,32 +200,3 @@
   <!-- النافذة المنزلقة لتفاصيل المشروع -->
   <div id="project-drawer" class="drawer-backdrop" aria-hidden="true">
     <div class="drawer-panel" role="dialog" aria-modal="true">
-      
-      <div id="drawer-image-wrapper" class="drawer-image-wrapper" style="display: none;">
-        <img id="drawer-image" src="" alt="Project Preview" loading="eager">
-      </div>
-
-      <div class="drawer-header">
-        <span id="drawer-date" class="mono-meta"></span>
-        <button id="drawer-close" class="close-btn" aria-label="Close details">✕</button>
-      </div>
-
-      <h3 id="drawer-title" class="drawer-title"></h3>
-      <p id="drawer-description" class="drawer-desc"></p>
-      <div id="drawer-tags" class="tag-row"></div>
-      <div class="drawer-actions">
-        <a id="drawer-live" href="#" target="_blank" rel="noopener" class="lux-btn primary">Visit Site ↗</a>
-        <a id="drawer-repo" href="#" target="_blank" rel="noopener" class="lux-btn secondary">Source Code</a>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- إشعار نسخ الإيميل -->
-  <div id="toast" class="toast">Email copied to clipboard</div>
-
-  <script src="scripts/render.js?v=2"></script>
-  <script src="scripts/app.js?v=2"></script>
-</body>
-
-</html>
