@@ -33,33 +33,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 2. التبديل بين وضع Craft ووضع Vibe وتغيير العنوان الرئيسي
+  // 2. التبديل بين وضع Craft ووضع Vibe وتحديث كامل الهيرو من content.json
   const btnCraft = document.getElementById('btn-craft');
   const btnVibe = document.getElementById('btn-vibe');
   const craftView = document.getElementById('craft-view');
   const vibeView = document.getElementById('vibe-view');
+  const statusText = document.getElementById('status-text');
   const heroTitle = document.getElementById('hero-title');
+  const heroBio = document.getElementById('hero-bio');
   const brandLogo = document.getElementById('brand-logo');
 
   function switchMode(mode) {
-    const heroData = window.siteData?.hero;
+    const isVibe = mode === 'vibe';
+    const modeData = window.siteData?.hero?.[isVibe ? 'vibe' : 'craft'];
 
-    if (mode === 'vibe') {
-      btnVibe?.classList.add('active');
-      btnCraft?.classList.remove('active');
-      craftView?.classList.remove('active-view');
-      vibeView?.classList.add('active-view');
-      if (heroTitle && heroData?.vibeTitle) {
-        heroTitle.textContent = heroData.vibeTitle;
-      }
-    } else {
-      btnCraft?.classList.add('active');
-      btnVibe?.classList.remove('active');
-      vibeView?.classList.remove('active-view');
-      craftView?.classList.add('active-view');
-      if (heroTitle && heroData?.quietTitle) {
-        heroTitle.textContent = heroData.quietTitle;
-      }
+    btnVibe?.classList.toggle('active', isVibe);
+    btnCraft?.classList.toggle('active', !isVibe);
+    vibeView?.classList.toggle('active-view', isVibe);
+    craftView?.classList.toggle('active-view', !isVibe);
+
+    if (modeData) {
+      if (statusText && modeData.status) statusText.textContent = modeData.status;
+      if (heroTitle && modeData.title) heroTitle.textContent = modeData.title;
+      if (heroBio && modeData.bio) heroBio.textContent = modeData.bio;
     }
   }
 

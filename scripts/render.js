@@ -4,15 +4,19 @@ async function loadContent() {
   try {
     const res = await fetch('data/content.json', { cache: 'no-cache' });
     siteData = await res.json();
-    window.siteData = siteData; // إتاحة البيانات لملف app.js لتبديل العنوان
+    window.siteData = siteData;
 
-    // 1. الهيرو والحالة
-    if (siteData.status) {
-      document.getElementById('status-text').textContent = siteData.status;
-    }
-    if (siteData.hero) {
-      document.getElementById('hero-title').textContent = siteData.hero.quietTitle;
-      document.getElementById('hero-bio').textContent = siteData.hero.bio;
+    // 1. الهيرو والحالة (حسب الوضع النشط حالياً)
+    const isVibeActive = document.getElementById('btn-vibe')?.classList.contains('active');
+    const currentHero = siteData.hero?.[isVibeActive ? 'vibe' : 'craft'];
+
+    if (currentHero) {
+      const statusEl = document.getElementById('status-text');
+      const titleEl = document.getElementById('hero-title');
+      const bioEl = document.getElementById('hero-bio');
+      if (statusEl && currentHero.status) statusEl.textContent = currentHero.status;
+      if (titleEl && currentHero.title) titleEl.textContent = currentHero.title;
+      if (bioEl && currentHero.bio) bioEl.textContent = currentHero.bio;
     }
 
     // 2. رسم المشاريع (Craft)
@@ -149,7 +153,6 @@ document.addEventListener('DOMContentLoaded', loadContent);
 /* ==========================================
    Letterboxd Fetcher (Fast Worker + SWR Cache)
    ========================================== */
-// استبدل الرابط التالي برابط الـ Worker الخاص بك
 const LB_WORKER_URL = "https://letterboxd-rss.balaydy069.workers.dev/";
 const LB_CACHE_KEY = "lb_activity_cache_v1";
 
@@ -269,13 +272,11 @@ async function fetchLetterboxdActivity() {
   const grid = document.getElementById("lb-grid");
   if (!grid) return;
 
-  // 1. عرض النسخة المحفوظة فوراً (0ms)
   try {
     const cached = JSON.parse(localStorage.getItem(LB_CACHE_KEY) || "null");
     if (cached?.length) renderLetterboxdUI(cached);
   } catch {}
 
-  // 2. جلب التحديث الأحدث في الخلفية من الـ Worker
   try {
     const response = await fetch(LB_WORKER_URL, { cache: "no-cache" });
     if (!response.ok) throw new Error(`Worker HTTP ${response.status}`);

@@ -1,9 +1,15 @@
 {
-  "status": "Engineering Student @ AUG",
   "hero": {
-    "quietTitle": "I build quiet, lasting things for the web.",
-    "vibeTitle": "I love vibing on coding, building lasting things & fixing bugs.",
-    "bio": "Computer Systems Engineering student."
+    "craft": {
+      "status": "Engineering Student · Gaza",
+      "title": "Building fast web software and clean backends.",
+      "bio": "I study computer systems and build lightweight web apps, APIs, and small tools meant to be used."
+    },
+    "vibe": {
+      "status": "Off the keyboard",
+      "title": "outside code.",
+      "bio": "I'm logging movies on Letterboxd."
+    }
   },
   "projects": [
     {
